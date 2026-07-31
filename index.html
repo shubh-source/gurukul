@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background-color: #0f0d0e; color: #f5f2eb;">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕉️</text></svg>" />
@@ -7,12 +7,29 @@
     <title>VedaTech Gurukul | Where Ancient Wisdom Meets Future Vision</title>
     <meta name="description" content="Premier residential Gurukul educational sanctuary blending Vedic philosophy, STEM, AI, Yoga, and global leadership for holistic development." />
     
+    <!-- Instant Anti-Flash Theme Initializer -->
+    <script>
+      (function() {
+        try {
+          var savedTheme = localStorage.getItem('gurukul_theme') || 'dark';
+          document.documentElement.setAttribute('data-theme', savedTheme);
+          if (savedTheme === 'dark') {
+            document.documentElement.style.backgroundColor = '#0f0d0e';
+            document.documentElement.style.color = '#f5f2eb';
+          } else {
+            document.documentElement.style.backgroundColor = '#fdfbf7';
+            document.documentElement.style.color = '#1c1917';
+          }
+        } catch (e) {}
+      })();
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   </head>
-  <body>
+  <body style="background-color: #0f0d0e; color: #f5f2eb; margin: 0; padding: 0;">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
