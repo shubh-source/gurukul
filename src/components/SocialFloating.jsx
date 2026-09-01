@@ -1,5 +1,5 @@
 import React from 'react';
-import { Youtube, Instagram, Facebook, Twitter, Linkedin, Send, PhoneCall, Music2 } from 'lucide-react';
+import { Youtube, Instagram, Facebook, Twitter, Linkedin, Send, Music2 } from 'lucide-react';
 
 export default function SocialFloating() {
   const socialLinks = [
@@ -8,8 +8,7 @@ export default function SocialFloating() {
     { name: 'Facebook', icon: Facebook, color: '#1877f2', url: 'https://facebook.com' },
     { name: 'X / Twitter', icon: Twitter, color: '#1da1f2', url: 'https://x.com' },
     { name: 'LinkedIn', icon: Linkedin, color: '#0a66c2', url: 'https://linkedin.com' },
-    { name: 'Telegram', icon: Send, color: '#0088cc', url: 'https://telegram.org' },
-    { name: 'Spotify', icon: Music2, color: '#1ed760', url: 'https://spotify.com' }
+    { name: 'Telegram', icon: Send, color: '#0088cc', url: 'https://telegram.org' }
   ];
 
   return (
@@ -39,7 +38,7 @@ export default function SocialFloating() {
             href={item.url}
             target="_blank"
             rel="noopener noreferrer"
-            title={`Follow VedaTech Gurukul on ${item.name}`}
+            title={`श्री आत्मानन्द संस्कृत शिक्षण संस्थान - ${item.name}`}
             style={{
               width: '36px',
               height: '36px',
