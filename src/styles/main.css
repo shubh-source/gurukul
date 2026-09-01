@@ -1,13 +1,13 @@
-/* VedaTech Gurukul - Main Design System & Theme Styles */
+/* श्री आत्मानन्द संस्कृत शिक्षण संस्थान - Main Design System & Theme Styles */
 
 :root {
   /* Light Theme ("Surya Gold") */
   --bg-primary: #fdfbf7;
   --bg-secondary: #f6f0e6;
-  --bg-card: rgba(255, 255, 255, 0.85);
-  --bg-glass: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(212, 175, 55, 0.25);
-  --border-glow: rgba(212, 175, 55, 0.5);
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --bg-glass: rgba(255, 255, 255, 0.85);
+  --border-color: rgba(212, 175, 55, 0.3);
+  --border-glow: rgba(212, 175, 55, 0.6);
   
   --text-primary: #1c1917;
   --text-secondary: #57534e;
@@ -15,24 +15,25 @@
   
   --accent-gold: #c59b27;
   --accent-gold-hover: #a37c1a;
-  --accent-saffron: #e65100;
+  --accent-saffron: #d84315;
+  --accent-vermillion: #b71c1c;
   --accent-saffron-light: #fff3e0;
   --accent-emerald: #1b5e20;
   --accent-emerald-light: #e8f5e9;
   --accent-indigo: #283593;
   --accent-indigo-light: #e8eaf6;
   
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 8px 24px rgba(197, 155, 39, 0.12);
-  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.12);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8px 24px rgba(197, 155, 39, 0.15);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.15);
   
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
   --radius-full: 9999px;
   
-  --font-serif: 'Cinzel', serif;
-  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-serif: 'Noto Serif Devanagari', 'Cinzel', serif;
+  --font-sans: 'Plus Jakarta Sans', 'Noto Sans Devanagari', sans-serif;
   
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -41,10 +42,10 @@
   /* Dark Theme ("Chandra Ashram Dark") */
   --bg-primary: #0f0d0e;
   --bg-secondary: #181517;
-  --bg-card: rgba(28, 24, 27, 0.85);
-  --bg-glass: rgba(24, 20, 23, 0.75);
-  --border-color: rgba(212, 175, 55, 0.2);
-  --border-glow: rgba(212, 175, 55, 0.6);
+  --bg-card: rgba(28, 24, 27, 0.88);
+  --bg-glass: rgba(24, 20, 23, 0.82);
+  --border-color: rgba(212, 175, 55, 0.25);
+  --border-glow: rgba(212, 175, 55, 0.65);
   
   --text-primary: #f5f2eb;
   --text-secondary: #d6cfc4;
@@ -53,15 +54,16 @@
   --accent-gold: #e5b839;
   --accent-gold-hover: #ffd54f;
   --accent-saffron: #ff7043;
-  --accent-saffron-light: rgba(230, 81, 0, 0.15);
+  --accent-vermillion: #ef5350;
+  --accent-saffron-light: rgba(230, 81, 0, 0.18);
   --accent-emerald: #4caf50;
-  --accent-emerald-light: rgba(27, 94, 32, 0.2);
+  --accent-emerald-light: rgba(27, 94, 32, 0.22);
   --accent-indigo: #7986cb;
-  --accent-indigo-light: rgba(40, 53, 147, 0.2);
+  --accent-indigo-light: rgba(40, 53, 147, 0.22);
   
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.6);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.65);
 }
 
 * {
@@ -117,12 +119,12 @@ button {
 }
 
 .saffron-gradient-btn {
-  background: linear-gradient(135deg, var(--accent-saffron) 0%, #ff8f00 100%);
+  background: linear-gradient(135deg, var(--accent-saffron) 0%, var(--accent-vermillion) 100%);
   color: #fff;
-  font-weight: 600;
+  font-weight: 700;
   padding: 0.85rem 1.75rem;
   border-radius: var(--radius-full);
-  box-shadow: 0 4px 16px rgba(230, 81, 0, 0.3);
+  box-shadow: 0 4px 16px rgba(216, 67, 21, 0.35);
   transition: var(--transition);
   display: inline-flex;
   align-items: center;
@@ -131,13 +133,13 @@ button {
 
 .saffron-gradient-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(230, 81, 0, 0.45);
+  box-shadow: 0 6px 20px rgba(216, 67, 21, 0.5);
 }
 
 .gold-outline-btn {
   border: 1px solid var(--accent-gold);
   color: var(--accent-gold);
-  font-weight: 600;
+  font-weight: 700;
   padding: 0.8rem 1.6rem;
   border-radius: var(--radius-full);
   transition: var(--transition);
@@ -182,11 +184,6 @@ button {
   50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); }
 }
 
-@keyframes spinSlow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 .animate-fade-in {
   animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -198,7 +195,7 @@ button {
 /* Section Header */
 .section-header {
   text-align: center;
-  max-width: 760px;
+  max-width: 780px;
   margin: 0 auto 3.5rem auto;
 }
 
@@ -206,29 +203,29 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.35rem 1rem;
+  padding: 0.35rem 1.1rem;
   border-radius: var(--radius-full);
   background: var(--accent-saffron-light);
   color: var(--accent-saffron);
   font-size: 0.85rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
   margin-bottom: 0.75rem;
-  border: 1px solid rgba(230, 81, 0, 0.2);
+  border: 1px solid rgba(216, 67, 21, 0.25);
 }
 
 .section-title {
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 1rem;
+  line-height: 1.25;
 }
 
 .section-subtitle {
   font-size: 1.1rem;
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 /* Custom Scrollbar */
@@ -260,7 +257,6 @@ button {
   border: 1px solid var(--border-color);
 }
 
-/* Responsive tweaks */
 @media (max-width: 768px) {
   .section-title {
     font-size: 1.85rem;

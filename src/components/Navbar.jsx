@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Sun, Moon, Search, Menu, X, Sparkles, BookOpen, GraduationCap, Phone, Calendar, Compass, Shield, ArrowRight, Youtube, Instagram, Send, PhoneCall, Newspaper } from 'lucide-react';
+import { Sun, Moon, Search, Menu, X, Sparkles, BookOpen, GraduationCap, Phone, Calendar, Compass, Shield, ArrowRight, Heart, Flame, Compass as JyotishIcon, Image, Bell, Newspaper, Award } from 'lucide-react';
 
 export default function Navbar({ activePage, setActivePage, theme, toggleTheme, onOpenSearch }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -7,14 +7,18 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
   const hoverTimeoutRef = useRef(null);
 
   const navItems = [
-    { id: 'home', label: 'Home', desc: 'Welcome overview & daily rhythm', icon: Compass },
-    { id: 'about', label: 'About Us', desc: 'Sanatana heritage & Guru Parampara', icon: Shield },
-    { id: 'academics', label: 'Academics', desc: 'Vedic STEM, Quantum AI & Ayurveda', icon: BookOpen },
-    { id: 'admissions', label: 'Admissions & Fees', desc: 'Calculator & online registration', icon: GraduationCap },
-    { id: 'campus', label: 'Campus Life', desc: '360° virtual tour & facilities', icon: Sparkles },
-    { id: 'events', label: 'Events & Conclaves', desc: 'Conclaves & annual festival calendar', icon: Calendar },
-    { id: 'news', label: 'Gurukul News & Press', desc: 'Live announcements & articles', icon: Newspaper },
-    { id: 'contact', label: 'Contact Us', desc: 'Direct helpline, address & FAQs', icon: Phone }
+    { id: 'home', label: 'मुख्य पृष्ठ', desc: 'संस्थान परिचय एवं गतिविधियों का विहंगम अवलोकन', icon: Compass },
+    { id: 'about', label: 'हमारे बारे में', desc: 'संस्थान का इतिहास, उद्देश्य एवं गुरु परंपरा', icon: Shield },
+    { id: 'gurukul', label: 'गुरुकुल', desc: 'संस्कृत शिक्षा, वेद-शास्त्र, आवासीय एवं दिनचर्या', icon: BookOpen },
+    { id: 'gaushala', label: 'गौशाला', desc: 'गौसेवा, संरक्षण, संवर्धन एवं गौ दान', icon: Heart },
+    { id: 'research', label: 'अनुसंधान', desc: 'भारतीय ज्ञान परंपरा एवं संस्कृत साहित्य अध्ययन', icon: Sparkles },
+    { id: 'sanskar', label: 'संस्कार एवं अनुष्ठान', desc: 'रुद्राभिषेक, हवन, यज्ञ, विवाह एवं पूजन', icon: Flame },
+    { id: 'jyotish', label: 'ज्योतिष सेवा', desc: 'जन्म कुंडली परामर्श, मुहूर्त एवं ग्रह शांति', icon: JyotishIcon },
+    { id: 'donate', label: 'सहयोग एवं अनुदान', desc: 'गुरुकुल, गौशाला एवं निःशुल्क अन्नदान में योगदान', icon: Award },
+    { id: 'admission', label: 'प्रवेश प्रक्रिया', desc: 'कक्षा 6 से 12 हेतु आवेदन पत्र एवं नियम', icon: GraduationCap },
+    { id: 'gallery', label: 'चित्रदीर्घा', desc: 'गुरुकुल, गौशाला एवं आयोजनों की तस्वीरें', icon: Image },
+    { id: 'notice', label: 'नवीनतम सूचनाएं', desc: 'प्रेस विज्ञप्ति एवं विशेष धार्मिक कार्यक्रम', icon: Bell },
+    { id: 'contact', label: 'संपर्क करें', desc: 'नैमिषारण्य पता, दूरभाष एवं ऑनलाइन संदेश', icon: Phone }
   ];
 
   const handleNavClick = (id) => {
@@ -34,7 +38,6 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
     }, 180);
   };
 
-  // Close menu on Escape key press
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') setIsMenuOpen(false);
@@ -45,28 +48,28 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
 
   return (
     <>
-      {/* Top Notice Bar */}
+      {/* Top Announcement Notice */}
       <div 
         style={{
           background: 'linear-gradient(90deg, #1c1917 0%, var(--accent-saffron) 50%, #1c1917 100%)',
           color: '#fff',
           fontSize: '0.8rem',
-          fontWeight: '600',
+          fontWeight: '700',
           textAlign: 'center',
-          padding: '0.35rem 1rem',
-          letterSpacing: '0.03em',
+          padding: '0.4rem 1rem',
+          letterSpacing: '0.02em',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           gap: '0.6rem'
         }}
       >
-        <span>🚩 Admissions Open for Session 2026-27 | Vedic STEM & Holistic Gurukul Stream</span>
+        <span>🚩 सत्र 2026-27 प्रवेश प्रारंभ | निःशुल्क आवासीय संस्कृत एवं आधुनिक गुरुकुल शिक्षा</span>
         <button 
-          onClick={() => handleNavClick('admissions')}
+          onClick={() => handleNavClick('admission')}
           style={{ textDecoration: 'underline', color: '#fff', fontWeight: '800', cursor: 'pointer' }}
         >
-          Apply Online →
+          आवेदन करें →
         </button>
       </div>
 
@@ -82,43 +85,44 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
           transition: 'var(--transition)'
         }}
       >
-        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '76px' }}>
+        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '82px' }}>
           
-          {/* Brand Logo */}
+          {/* Brand Logo & Hindi Title */}
           <div 
             onClick={() => handleNavClick('home')}
-            style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer' }}
+            style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', cursor: 'pointer' }}
           >
             <div 
               style={{
-                width: '44px',
-                height: '44px',
+                width: '48px',
+                height: '48px',
                 borderRadius: '50%',
-                background: 'linear-gradient(135deg, var(--accent-saffron) 0%, var(--accent-gold) 100%)',
+                background: 'linear-gradient(135deg, var(--accent-vermillion) 0%, var(--accent-gold) 100%)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 0 15px rgba(230, 81, 0, 0.4)',
+                boxShadow: '0 0 15px rgba(183, 28, 28, 0.4)',
                 color: '#fff',
-                fontSize: '1.4rem'
+                fontSize: '1.5rem',
+                flexShrink: 0
               }}
             >
-              🕉️
+              🚩
             </div>
             <div>
-              <span className="font-serif gold-gradient-text" style={{ fontSize: '1.35rem', fontWeight: '800', display: 'block', lineHeight: 1.1 }}>
-                VEDATECH
+              <span className="font-serif gold-gradient-text" style={{ fontSize: '1.25rem', fontWeight: '800', display: 'block', lineHeight: 1.15 }}>
+                श्री आत्मानन्द संस्कृत शिक्षण संस्थान
               </span>
-              <span style={{ fontSize: '0.72rem', letterSpacing: '0.18em', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: '700' }}>
-                GURUKUL ACADEMY
+              <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)', fontWeight: '600', display: 'block', marginTop: '2px' }}>
+                संस्कृत शिक्षा • संस्कार • संस्कृति • गौसेवा | नैमिषारण्य, सीतापुर (उ.प्र.)
               </span>
             </div>
           </div>
 
-          {/* Right Action Tools + HOVER EXPANDING SEARCH BUTTON + HAMBURGER */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          {/* Right Action Tools (Search, Theme, Donate CTA, Hamburger Menu) */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
             
-            {/* Magnifier Icon that Expands into Search Pill on Hover or Touch */}
+            {/* Hover Expanding Search */}
             <div
               onMouseEnter={() => setIsSearchHovered(true)}
               onMouseLeave={() => setIsSearchHovered(false)}
@@ -126,7 +130,7 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
             >
               <button
                 onClick={onOpenSearch}
-                title="Search Gurukul"
+                title="खोजें (Search)"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -147,8 +151,6 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
                 }}
               >
                 <Search size={18} style={{ color: 'var(--accent-gold)', flexShrink: 0 }} />
-                
-                {/* Content visible when cursor hovers or tapped on mobile */}
                 <span 
                   style={{ 
                     opacity: isSearchHovered ? 1 : 0, 
@@ -157,7 +159,7 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
                     fontWeight: '600'
                   }}
                 >
-                  Search...
+                  खोजें...
                 </span>
               </button>
             </div>
@@ -165,7 +167,7 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
             {/* Theme Switcher */}
             <button
               onClick={toggleTheme}
-              title={theme === 'dark' ? "Switch to Surya Gold Light Theme" : "Switch to Chandra Ashram Dark Theme"}
+              title={theme === 'dark' ? "सूर्य गोल्ड लाइट थीम" : "चन्द्र आश्रम डार्क थीम"}
               style={{
                 width: '40px',
                 height: '40px',
@@ -182,13 +184,13 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
               {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
             </button>
 
-            {/* Apply Now CTA */}
+            {/* Admission CTA */}
             <button
-              onClick={() => handleNavClick('admissions')}
+              onClick={() => handleNavClick('admission')}
               className="saffron-gradient-btn"
-              style={{ padding: '0.55rem 1.25rem', fontSize: '0.85rem' }}
+              style={{ padding: '0.55rem 1.2rem', fontSize: '0.85rem' }}
             >
-              Apply Now
+              प्रवेश आवेदन
             </button>
 
             {/* Hover-activated Hamburger Menu Button */}
@@ -202,7 +204,7 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.5rem',
+                  gap: '0.45rem',
                   padding: '0.55rem 1rem',
                   borderRadius: 'var(--radius-full)',
                   background: isMenuOpen ? 'var(--accent-gold)' : 'var(--bg-secondary)',
@@ -216,14 +218,14 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
                 }}
               >
                 <Menu size={22} />
-                <span>Menu</span>
+                <span>मेन्यू</span>
               </button>
             </div>
           </div>
         </div>
       </header>
 
-      {/* ALWAYS MOUNTED HOVER DRAWER WITH CURVED CORNERS & GENTLE SLIDE */}
+      {/* ALWAYS MOUNTED HOVER DRAWER WITH HINDI NAVIGATION */}
       <div 
         onMouseEnter={() => setIsMenuOpen(false)}
         style={{
@@ -246,7 +248,7 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
           onMouseLeave={handleMouseLeave}
           style={{
             width: '100%',
-            maxWidth: '460px',
+            maxWidth: '480px',
             height: '100vh',
             background: 'var(--bg-primary)',
             borderLeft: '1px solid var(--accent-gold)',
@@ -265,14 +267,14 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
           onClick={(e) => e.stopPropagation()}
         >
           {/* Drawer Header */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem', paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-              <span style={{ fontSize: '1.6rem' }}>🕉️</span>
+              <span style={{ fontSize: '1.6rem' }}>🚩</span>
               <div>
-                <h3 className="font-serif gold-gradient-text" style={{ fontSize: '1.25rem', fontWeight: '800' }}>
-                  VEDATECH GURUKUL
+                <h3 className="font-serif gold-gradient-text" style={{ fontSize: '1.15rem', fontWeight: '800' }}>
+                  श्री आत्मानन्द संस्कृत शिक्षण संस्थान
                 </h3>
-                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Navigation Menu</p>
+                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>नैमिषारण्य, सीतापुर (उ.प्र.)</p>
               </div>
             </div>
 
@@ -296,7 +298,7 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
           </div>
 
           {/* Navigation Links Grid */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', marginBottom: '2rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.5rem' }}>
             {navItems.map((item) => {
               const IconComponent = item.icon;
               const isActive = activePage === item.id;
@@ -305,7 +307,7 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
                   style={{
-                    padding: '0.8rem 1rem',
+                    padding: '0.75rem 0.95rem',
                     borderRadius: 'var(--radius-md)',
                     background: isActive ? 'rgba(212, 175, 55, 0.15)' : 'var(--bg-secondary)',
                     border: isActive ? '1px solid var(--accent-gold)' : '1px solid var(--border-color)',
@@ -327,16 +329,17 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        border: '1px solid var(--border-color)'
+                        border: '1px solid var(--border-color)',
+                        flexShrink: 0
                       }}
                     >
                       <IconComponent size={17} />
                     </div>
                     <div>
-                      <h4 style={{ fontSize: '0.95rem', fontWeight: isActive ? '800' : '600', color: isActive ? 'var(--accent-gold)' : 'var(--text-primary)' }}>
+                      <h4 style={{ fontSize: '0.95rem', fontWeight: isActive ? '800' : '700', color: isActive ? 'var(--accent-gold)' : 'var(--text-primary)' }}>
                         {item.label}
                       </h4>
-                      <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{item.desc}</p>
+                      <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>{item.desc}</p>
                     </div>
                   </div>
                   <ArrowRight size={15} style={{ color: isActive ? 'var(--accent-gold)' : 'var(--text-muted)' }} />
@@ -345,22 +348,18 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
             })}
           </div>
 
-          {/* Drawer Quick Contact & Socials Footer */}
-          <div style={{ marginTop: 'auto', paddingTop: '1.25rem', borderTop: '1px solid var(--border-color)' }}>
-            <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.65rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-              <PhoneCall size={14} style={{ color: 'var(--accent-saffron)' }} />
-              <span>Admissions: +91 (0135) 289-VEDA</span>
+          {/* Drawer Quick Contact Footer */}
+          <div style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid var(--border-color)' }}>
+            <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+              <span>📞 संपर्क / हेल्पलाइन: +91 (05862) 289-ATMANAND</span>
             </div>
-            <div style={{ display: 'flex', gap: '0.6rem' }}>
-              <a href="https://youtube.com" target="_blank" rel="noreferrer" style={{ padding: '0.5rem', borderRadius: '50%', background: 'var(--bg-secondary)', color: 'var(--text-primary)' }}>
-                <Youtube size={16} />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" style={{ padding: '0.5rem', borderRadius: '50%', background: 'var(--bg-secondary)', color: 'var(--text-primary)' }}>
-                <Instagram size={16} />
-              </a>
-              <a href="https://telegram.org" target="_blank" rel="noreferrer" style={{ padding: '0.5rem', borderRadius: '50%', background: 'var(--bg-secondary)', color: 'var(--text-primary)' }}>
-                <Send size={16} />
-              </a>
+            <div style={{ display: 'flex', gap: '0.5rem' }}>
+              <button onClick={() => handleNavClick('donate')} className="gold-outline-btn" style={{ fontSize: '0.78rem', padding: '0.35rem 0.85rem' }}>
+                🙏 सहयोग / दान करें
+              </button>
+              <button onClick={() => handleNavClick('contact')} className="saffron-gradient-btn" style={{ fontSize: '0.78rem', padding: '0.35rem 0.85rem' }}>
+                संपर्क फॉर्म
+              </button>
             </div>
           </div>
 

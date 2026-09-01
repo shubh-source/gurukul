@@ -8,13 +8,12 @@ export default function Footer({ setActivePage }) {
   };
 
   const socialLinks = [
-    { name: 'YouTube', icon: Youtube, url: 'https://youtube.com', handle: '@VedaTechGurukul' },
-    { name: 'Instagram', icon: Instagram, url: 'https://instagram.com', handle: '@gurukul_official' },
-    { name: 'Facebook', icon: Facebook, url: 'https://facebook.com', handle: '/VedaTechGurukul' },
-    { name: 'X / Twitter', icon: Twitter, url: 'https://x.com', handle: '@GurukulSanctuary' },
-    { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com', handle: 'VedaTech Gurukul Academy' },
-    { name: 'Telegram', icon: Send, url: 'https://telegram.org', handle: 't.me/GurukulNews' },
-    { name: 'Spotify', icon: Music2, url: 'https://spotify.com', handle: 'Gurukul Vedic Chants & Podcast' }
+    { name: 'YouTube', icon: Youtube, url: 'https://youtube.com', handle: '@ShriAtmanandSansthan' },
+    { name: 'Instagram', icon: Instagram, url: 'https://instagram.com', handle: '@atmanand_sansthan' },
+    { name: 'Facebook', icon: Facebook, url: 'https://facebook.com', handle: '/ShriAtmanandSansthan' },
+    { name: 'X / Twitter', icon: Twitter, url: 'https://x.com', handle: '@AtmanandSansthan' },
+    { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com', handle: 'Shri Atmanand Sansthan' },
+    { name: 'Telegram', icon: Send, url: 'https://telegram.org', handle: 't.me/AtmanandSansthan' }
   ];
 
   return (
@@ -42,62 +41,61 @@ export default function Footer({ setActivePage }) {
           {/* Col 1: Brand Info */}
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem' }}>
-              <span style={{ fontSize: '1.6rem' }}>🕉️</span>
-              <span className="font-serif gold-gradient-text" style={{ fontSize: '1.4rem', fontWeight: '800' }}>
-                VEDATECH GURUKUL
+              <span style={{ fontSize: '1.6rem' }}>🚩</span>
+              <span className="font-serif gold-gradient-text" style={{ fontSize: '1.3rem', fontWeight: '800' }}>
+                श्री आत्मानन्द संस्कृत शिक्षण संस्थान
               </span>
             </div>
-            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '1.25rem' }}>
-              A sacred sanctuary of learning where ancient Indian Sanatana wisdom, character building, and Yogic discipline converge with futuristic STEM, AI, and global leadership.
+            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.65, marginBottom: '1.25rem' }}>
+              भारतीय ज्ञान परंपरा, संस्कृत भाषा, वेद-वेदांग, संस्कार, गौसेवा एवं संस्कृति के संरक्षण व संवर्धन हेतु समर्पित एक पवित्र शैक्षणिक संस्थान।
             </p>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-gold)', fontSize: '0.85rem', fontWeight: '600' }}>
-              <span>📍 Rishikesh Ashram Foothills & Digital AI Campus</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-gold)', fontSize: '0.85rem', fontWeight: '700' }}>
+              <span>📍 नैमिषारण्य, सीतापुर, उत्तर प्रदेश - 261402</span>
             </div>
           </div>
 
-          {/* Col 2: Quick Navigation */}
+          {/* Col 2: Quick Navigation 1 */}
           <div>
             <h4 className="font-serif" style={{ fontSize: '1.1rem', fontWeight: '700', marginBottom: '1.25rem', color: 'var(--accent-gold)' }}>
-              Quick Navigation
+              मुख्य पृष्ठ लिंक
             </h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.9rem' }}>
-              <li><button onClick={() => handlePageChange('home')} style={{ color: 'var(--text-secondary)' }}>Home Overview</button></li>
-              <li><button onClick={() => handlePageChange('about')} style={{ color: 'var(--text-secondary)' }}>About Our Heritage & Gurus</button></li>
-              <li><button onClick={() => handlePageChange('academics')} style={{ color: 'var(--text-secondary)' }}>Academic Curriculum</button></li>
-              <li><button onClick={() => handlePageChange('admissions')} style={{ color: 'var(--text-secondary)' }}>Admissions & Fee Calculator</button></li>
-              <li><button onClick={() => handlePageChange('campus')} style={{ color: 'var(--text-secondary)' }}>360° Campus Virtual Tour</button></li>
-              <li><button onClick={() => handlePageChange('events')} style={{ color: 'var(--text-secondary)' }}>Gurukul Events & Conclaves</button></li>
-              <li><button onClick={() => handlePageChange('news')} style={{ color: 'var(--text-secondary)' }}>Live News & Press Releases</button></li>
+              <li><button onClick={() => handlePageChange('home')} style={{ color: 'var(--text-secondary)' }}>मुख्य पृष्ठ (Home)</button></li>
+              <li><button onClick={() => handlePageChange('about')} style={{ color: 'var(--text-secondary)' }}>हमारे बारे में (About Us)</button></li>
+              <li><button onClick={() => handlePageChange('gurukul')} style={{ color: 'var(--text-secondary)' }}>गुरुकुल परंपरा (Gurukul)</button></li>
+              <li><button onClick={() => handlePageChange('gaushala')} style={{ color: 'var(--text-secondary)' }}>गौशाला एवं गौसेवा (Gaushala)</button></li>
+              <li><button onClick={() => handlePageChange('research')} style={{ color: 'var(--text-secondary)' }}>अनुसंधान (Research)</button></li>
+              <li><button onClick={() => handlePageChange('sanskar')} style={{ color: 'var(--text-secondary)' }}>संस्कार एवं अनुष्ठान</button></li>
             </ul>
           </div>
 
-          {/* Col 3: Key Streams */}
+          {/* Col 3: Quick Navigation 2 */}
           <div>
             <h4 className="font-serif" style={{ fontSize: '1.1rem', fontWeight: '700', marginBottom: '1.25rem', color: 'var(--accent-gold)' }}>
-              Educational Streams
+              सेवाएं एवं प्रवेश
             </h4>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-              <li>• Vedic STEM & Quantum Physics</li>
-              <li>• Ayurveda & Bio-Hermeneutics</li>
-              <li>• Kalaripayattu & Martial Arts</li>
-              <li>• Yogic Science & Meditation</li>
-              <li>• Sanskrit, Computational Linguistics</li>
-              <li>• Astronomy & Ancient Yantras</li>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.9rem' }}>
+              <li><button onClick={() => handlePageChange('jyotish')} style={{ color: 'var(--text-secondary)' }}>ज्योतिष परामर्श (Jyotish)</button></li>
+              <li><button onClick={() => handlePageChange('donate')} style={{ color: 'var(--text-secondary)' }}>सहयोग एवं अनुदान (Donate)</button></li>
+              <li><button onClick={() => handlePageChange('admission')} style={{ color: 'var(--text-secondary)' }}>प्रवेश प्रक्रिया (Admission)</button></li>
+              <li><button onClick={() => handlePageChange('gallery')} style={{ color: 'var(--text-secondary)' }}>चित्रदीर्घा (Gallery)</button></li>
+              <li><button onClick={() => handlePageChange('notice')} style={{ color: 'var(--text-secondary)' }}>सूचना एवं समाचार (Notices)</button></li>
+              <li><button onClick={() => handlePageChange('contact')} style={{ color: 'var(--text-secondary)' }}>संपर्क करें (Contact Us)</button></li>
             </ul>
           </div>
 
           {/* Col 4: Newsletter & Contact */}
           <div>
             <h4 className="font-serif" style={{ fontSize: '1.1rem', fontWeight: '700', marginBottom: '1.25rem', color: 'var(--accent-gold)' }}>
-              Gurukul Newsletter
+              सूचना एवं पत्रिका
             </h4>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.85rem' }}>
-              Subscribe to monthly discourses, research papers, and event updates.
+              संस्थान की आगामी गतिविधियों, अनुष्ठान तिथियों व प्रकाशनों से जुड़ें।
             </p>
             <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
               <input
                 type="email"
-                placeholder="Enter email address"
+                placeholder="ईमेल भरें..."
                 style={{
                   padding: '0.6rem 0.85rem',
                   borderRadius: 'var(--radius-sm)',
@@ -109,11 +107,11 @@ export default function Footer({ setActivePage }) {
                 }}
               />
               <button className="saffron-gradient-btn" style={{ padding: '0.6rem 1rem', fontSize: '0.85rem' }}>
-                Join
+                जुड़ें
               </button>
             </div>
             <div style={{ fontSize: '0.825rem', color: 'var(--text-muted)' }}>
-              📞 Admissions Hotline: +91 (0135) 289-VEDA
+              📞 हेल्पलाइन: +91 (05862) 289-ATMANAND
             </div>
           </div>
 
@@ -130,9 +128,9 @@ export default function Footer({ setActivePage }) {
           }}
         >
           <div style={{ textAlign: 'center', marginBottom: '1.25rem' }}>
-            <span className="section-tag" style={{ fontSize: '0.75rem' }}>CONNECT ACROSS CHANNELS</span>
+            <span className="section-tag" style={{ fontSize: '0.75rem' }}>सोशल मीडिया एवं नेटवर्क</span>
             <h3 className="font-serif" style={{ fontSize: '1.35rem', fontWeight: '700' }}>
-              Our Social Media & Community Ecosystem
+              संस्थान के आधिकारिक डिजिटल माध्यम
             </h3>
           </div>
 
@@ -155,7 +153,6 @@ export default function Footer({ setActivePage }) {
                     border: '1px solid var(--border-color)',
                     transition: 'var(--transition)'
                   }}
-                  className="social-footer-card"
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                     <IconComp size={16} style={{ color: 'var(--accent-gold)' }} />
@@ -183,12 +180,12 @@ export default function Footer({ setActivePage }) {
           }}
         >
           <div>
-            © 2026 VedaTech Gurukul Educational Trust. All rights reserved. Dharma & Science in Harmony.
+            © 2026 श्री आत्मानन्द संस्कृत शिक्षण संस्थान, नैमिषारण्य, सीतापुर (उ.प्र.)। सर्वाधिकार सुरक्षित।
           </div>
           <div style={{ display: 'flex', gap: '1.5rem' }}>
-            <a href="#privacy">Privacy Policy</a>
-            <a href="#terms">Gurukul Code of Conduct</a>
-            <a href="#sitemap">Sitemap</a>
+            <a href="#privacy">गोपनीयता नीति</a>
+            <a href="#terms">संस्थान नियमावली</a>
+            <a href="#sitemap">साइटमैप</a>
           </div>
         </div>
 

@@ -2,151 +2,133 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import SocialFloating from './components/SocialFloating';
-import SearchModal from './components/SearchModal';
 import AudioPlayer from './components/AudioPlayer';
+import SearchModal from './components/SearchModal';
 
 import Home from './pages/Home';
 import About from './pages/About';
-import Academics from './pages/Academics';
-import Admissions from './pages/Admissions';
-import CampusLife from './pages/CampusLife';
-import Events from './pages/Events';
-import News from './pages/News';
+import Gurukul from './pages/Gurukul';
+import Gaushala from './pages/Gaushala';
+import Research from './pages/Research';
+import Sanskar from './pages/Sanskar';
+import Jyotish from './pages/Jyotish';
+import Donate from './pages/Donate';
+import Admission from './pages/Admission';
+import Gallery from './pages/Gallery';
+import Notice from './pages/Notice';
 import Contact from './pages/Contact';
 
 const PATH_MAP = {
   '/': 'home',
   '/about': 'about',
-  '/academics': 'academics',
-  '/admissions': 'admissions',
-  '/campus': 'campus',
-  '/events': 'events',
-  '/news': 'news',
+  '/gurukul': 'gurukul',
+  '/gaushala': 'gaushala',
+  '/research': 'research',
+  '/sanskar': 'sanskar',
+  '/jyotish': 'jyotish',
+  '/donate': 'donate',
+  '/admission': 'admission',
+  '/gallery': 'gallery',
+  '/notice': 'notice',
   '/contact': 'contact'
 };
 
 const PAGE_TO_PATH = {
-  'home': '/',
-  'about': '/about',
-  'academics': '/academics',
-  'admissions': '/admissions',
-  'campus': '/campus',
-  'events': '/events',
-  'news': '/news',
-  'contact': '/contact'
+  home: '/',
+  about: '/about',
+  gurukul: '/gurukul',
+  gaushala: '/gaushala',
+  research: '/research',
+  sanskar: '/sanskar',
+  jyotish: '/jyotish',
+  donate: '/donate',
+  admission: '/admission',
+  gallery: '/gallery',
+  notice: '/notice',
+  contact: '/contact'
 };
 
 export default function App() {
-  const getInitialPage = () => {
-    const path = window.location.pathname;
-    return PATH_MAP[path] || 'home';
-  };
+  const [activePage, setActivePage] = useState(() => {
+    const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+    return PATH_MAP[currentPath] || 'home';
+  });
 
-  const [activePage, setActivePage] = useState(getInitialPage);
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('gurukul_theme') || 'dark';
   });
+
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
-  // Sync state with theme
+  // Sync theme with HTML attribute
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('gurukul_theme', theme);
   }, [theme]);
 
-  // Handle true multi-page URL routing & browser back/forward buttons
-  useEffect(() => {
-    const handlePopState = () => {
-      const path = window.location.pathname;
-      const page = PATH_MAP[path] || 'home';
-      setActivePage(page);
-      window.scrollTo(0, 0);
-    };
-
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
-  }, []);
-
-  // Function to navigate between true pages
-  const handleNavigate = (pageId) => {
+  // Handle URL history state & sync
+  const handlePageChange = (pageId) => {
+    setActivePage(pageId);
     const targetPath = PAGE_TO_PATH[pageId] || '/';
     if (window.location.pathname !== targetPath) {
-      window.history.pushState({}, '', targetPath);
+      window.history.pushState({ pageId }, '', targetPath);
     }
-    setActivePage(pageId);
-    window.scrollTo(0, 0); // Instant reset to top for true multi-page feel
+    window.scrollTo(0, 0);
   };
 
-  // Global shortcut for Search (Ctrl+K)
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault();
-        setIsSearchOpen(prev => !prev);
-      }
+    const handlePopState = (e) => {
+      const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+      setActivePage(PATH_MAP[currentPath] || 'home');
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   const toggleTheme = () => {
     setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
   };
 
-  const renderCurrentPage = () => {
+  const renderPage = () => {
     switch (activePage) {
-      case 'home':
-        return <Home onNavigate={handleNavigate} />;
-      case 'about':
-        return <About onNavigate={handleNavigate} />;
-      case 'academics':
-        return <Academics onNavigate={handleNavigate} />;
-      case 'admissions':
-        return <Admissions onNavigate={handleNavigate} />;
-      case 'campus':
-        return <CampusLife onNavigate={handleNavigate} />;
-      case 'events':
-        return <Events onNavigate={handleNavigate} />;
-      case 'news':
-        return <News onNavigate={handleNavigate} />;
-      case 'contact':
-        return <Contact onNavigate={handleNavigate} />;
-      default:
-        return <Home onNavigate={handleNavigate} />;
+      case 'about': return <About onNavigate={handlePageChange} />;
+      case 'gurukul': return <Gurukul onNavigate={handlePageChange} />;
+      case 'gaushala': return <Gaushala onNavigate={handlePageChange} />;
+      case 'research': return <Research onNavigate={handlePageChange} />;
+      case 'sanskar': return <Sanskar onNavigate={handlePageChange} />;
+      case 'jyotish': return <Jyotish onNavigate={handlePageChange} />;
+      case 'donate': return <Donate onNavigate={handlePageChange} />;
+      case 'admission': return <Admission onNavigate={handlePageChange} />;
+      case 'gallery': return <Gallery onNavigate={handlePageChange} />;
+      case 'notice': return <Notice onNavigate={handlePageChange} />;
+      case 'contact': return <Contact onNavigate={handlePageChange} />;
+      default: return <Home onNavigate={handlePageChange} />;
     }
   };
 
   return (
     <div className="page-container">
-      {/* Automatic Background Calm Music */}
-      <AudioPlayer />
-
-      {/* Navigation Header Bar */}
       <Navbar
         activePage={activePage}
-        setActivePage={handleNavigate}
+        setActivePage={handlePageChange}
         theme={theme}
         toggleTheme={toggleTheme}
         onOpenSearch={() => setIsSearchOpen(true)}
       />
 
-      {/* Floating Sticky Social Bar */}
-      <SocialFloating />
+      <main className="main-content">
+        {renderPage()}
+      </main>
 
-      {/* Global Live Search Modal */}
+      <Footer setActivePage={handlePageChange} />
+
+      <SocialFloating />
+      <AudioPlayer />
       <SearchModal
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
-        onNavigate={handleNavigate}
+        onNavigate={handlePageChange}
       />
-
-      {/* Active Page View */}
-      <main className="main-content" key={activePage}>
-        {renderCurrentPage()}
-      </main>
-
-      {/* Footer */}
-      <Footer setActivePage={handleNavigate} />
     </div>
   );
 }

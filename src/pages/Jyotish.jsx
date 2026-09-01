@@ -1,0 +1,137 @@
+import React, { useState } from 'react';
+import { Images } from '../assets/images';
+import { Compass, Sparkles, CheckCircle2, Send } from 'lucide-react';
+
+export default function Jyotish({ onNavigate }) {
+  const [formData, setFormData] = useState({ name: '', dob: '', time: '', place: '', phone: '', question: '' });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
+  return (
+    <div className="animate-fade-in" style={{ paddingBottom: '4rem' }}>
+      
+      {/* Header Banner */}
+      <section style={{ padding: '4rem 0 3rem 0', background: 'var(--bg-secondary)', borderBottom: '1px solid var(--border-color)' }}>
+        <div className="container" style={{ textAlign: 'center', maxWidth: '800px' }}>
+          <span className="section-tag">वेदचक्षु — भारतीय ज्योतिष</span>
+          <h1 className="section-title font-serif">ज्योतिष परामर्श एवं मुहूर्त सेवा</h1>
+          <p className="section-subtitle">
+            प्राचीन भारतीय सिद्धान्त एवं फलित ज्योतिष परंपरा के अनुसार प्रामाणिक मार्गदर्शन।
+          </p>
+        </div>
+      </section>
+
+      {/* SERVICES GRID */}
+      <section style={{ padding: '4rem 0', background: 'var(--bg-primary)' }}>
+        <div className="container">
+          
+          <div className="section-header">
+            <span className="section-tag">ज्योतिष सेवाएं</span>
+            <h2 className="section-title font-serif">शास्त्रीय परामर्श एवं मार्गदर्शन</h2>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.75rem', marginBottom: '4rem' }}>
+            
+            <div className="glass-panel" style={{ padding: '1.75rem', background: 'var(--bg-secondary)' }}>
+              <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>📜</div>
+              <h3 className="font-serif" style={{ fontSize: '1.3rem', fontWeight: '800', marginBottom: '0.5rem', color: 'var(--accent-gold)' }}>
+                जन्म पत्रिका (कुंडली) निर्माण
+              </h3>
+              <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                षोडशवर्ग, दशास्त्र एवं सटीक ग्रहाचार गणना सहित जन्म कुंडली पत्रिका।
+              </p>
+            </div>
+
+            <div className="glass-panel" style={{ padding: '1.75rem', background: 'var(--bg-secondary)' }}>
+              <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>💑</div>
+              <h3 className="font-serif" style={{ fontSize: '1.3rem', fontWeight: '800', marginBottom: '0.5rem', color: 'var(--accent-saffron)' }}>
+                विवाह मेलपक (गुण मिलान)
+              </h3>
+              <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                अष्टकूट गुण मिलान, मङ्गल दोष विचार एवं सुखी गृहस्थ जीवन का मार्गदर्शन।
+              </p>
+            </div>
+
+            <div className="glass-panel" style={{ padding: '1.75rem', background: 'var(--bg-secondary)' }}>
+              <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>⌛</div>
+              <h3 className="font-serif" style={{ fontSize: '1.3rem', fontWeight: '800', marginBottom: '0.5rem', color: 'var(--accent-emerald)' }}>
+                शुभ मुहूर्त विचार
+              </h3>
+              <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                विवाह, गृह प्रवेश, व्यापार प्रारंभ एवं मुंडन हेतु अतिशुद्ध पञ्चाङ्ग मुहूर्त।
+              </p>
+            </div>
+
+            <div className="glass-panel" style={{ padding: '1.75rem', background: 'var(--bg-secondary)' }}>
+              <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🪐</div>
+              <h3 className="font-serif" style={{ fontSize: '1.3rem', fontWeight: '800', marginBottom: '0.5rem', color: 'var(--accent-indigo)' }}>
+                ग्रह शांति व उपाय
+              </h3>
+              <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                कालसर्प, साढ़ेसाती व पितृदोष निवारण हेतु वैदिक जाप व रत्न-रुद्राक्ष परामर्श।
+              </p>
+            </div>
+
+          </div>
+
+          {/* JYOTISH FORM */}
+          <div className="glass-panel" style={{ maxWidth: '680px', margin: '0 auto', padding: '2.5rem', background: 'var(--bg-secondary)', border: '1px solid var(--accent-gold)' }}>
+            <h3 className="font-serif text-center" style={{ fontSize: '1.6rem', fontWeight: '800', marginBottom: '1.5rem', textAlign: 'center' }}>
+              ज्योतिष परामर्श हेतु विवरण भरें
+            </h3>
+
+            {submitted ? (
+              <div style={{ textAlign: 'center', padding: '2rem 0' }}>
+                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📜</div>
+                <h4 className="font-serif gold-gradient-text" style={{ fontSize: '1.5rem', fontWeight: '800', marginBottom: '0.75rem' }}>
+                  आपका विवरण सुरक्षित प्राप्त हो गया है!
+                </h4>
+                <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)' }}>
+                  संस्थान के ज्योतिषाचार्य आपकी पत्रिका का अध्ययन करके अतिशीघ्र संपर्क करेंगे।
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
+                <div>
+                  <label style={{ fontSize: '0.85rem', fontWeight: '700', display: 'block', marginBottom: '0.35rem' }}>पूरा नाम *</label>
+                  <input type="text" required placeholder="उदा: श्री रामप्रकाश मिश्र" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} style={{ width: '100%', padding: '0.7rem 0.9rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-color)', background: 'var(--bg-primary)', color: 'var(--text-primary)' }} />
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                  <div>
+                    <label style={{ fontSize: '0.85rem', fontWeight: '700', display: 'block', marginBottom: '0.35rem' }}>जन्म तिथि *</label>
+                    <input type="date" required value={formData.dob} onChange={(e) => setFormData({ ...formData, dob: e.target.value })} style={{ width: '100%', padding: '0.7rem 0.9rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-color)', background: 'var(--bg-primary)', color: 'var(--text-primary)' }} />
+                  </div>
+                  <div>
+                    <label style={{ fontSize: '0.85rem', fontWeight: '700', display: 'block', marginBottom: '0.35rem' }}>जन्म समय *</label>
+                    <input type="time" required value={formData.time} onChange={(e) => setFormData({ ...formData, time: e.target.value })} style={{ width: '100%', padding: '0.7rem 0.9rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-color)', background: 'var(--bg-primary)', color: 'var(--text-primary)' }} />
+                  </div>
+                </div>
+
+                <div>
+                  <label style={{ fontSize: '0.85rem', fontWeight: '700', display: 'block', marginBottom: '0.35rem' }}>जन्म स्थान *</label>
+                  <input type="text" required placeholder="उदा: सीतापुर, उत्तर प्रदेश" value={formData.place} onChange={(e) => setFormData({ ...formData, place: e.target.value })} style={{ width: '100%', padding: '0.7rem 0.9rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-color)', background: 'var(--bg-primary)', color: 'var(--text-primary)' }} />
+                </div>
+
+                <div>
+                  <label style={{ fontSize: '0.85rem', fontWeight: '700', display: 'block', marginBottom: '0.35rem' }}>संपर्क मोबाइल नंबर *</label>
+                  <input type="tel" required placeholder="+91 9876543210" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} style={{ width: '100%', padding: '0.7rem 0.9rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-color)', background: 'var(--bg-primary)', color: 'var(--text-primary)' }} />
+                </div>
+
+                <button type="submit" className="saffron-gradient-btn" style={{ width: '100%', justifyContent: 'center', marginTop: '0.5rem' }}>
+                  ज्योतिष परामर्श हेतु भेजें →
+                </button>
+              </form>
+            )}
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  );
+}
