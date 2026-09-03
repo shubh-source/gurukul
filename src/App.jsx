@@ -19,41 +19,29 @@ import Gallery from './pages/Gallery';
 import Notice from './pages/Notice';
 import Contact from './pages/Contact';
 
-const PATH_MAP = {
-  '/': 'home',
-  '/about': 'about',
-  '/gurukul': 'gurukul',
-  '/gaushala': 'gaushala',
-  '/research': 'research',
-  '/sanskar': 'sanskar',
-  '/jyotish': 'jyotish',
-  '/donate': 'donate',
-  '/admission': 'admission',
-  '/gallery': 'gallery',
-  '/notice': 'notice',
-  '/contact': 'contact'
+const HASH_MAP = {
+  '': 'home',
+  '#/': 'home',
+  '#/about': 'about',
+  '#/gurukul': 'gurukul',
+  '#/gaushala': 'gaushala',
+  '#/research': 'research',
+  '#/sanskar': 'sanskar',
+  '#/jyotish': 'jyotish',
+  '#/donate': 'donate',
+  '#/admission': 'admission',
+  '#/gallery': 'gallery',
+  '#/notice': 'notice',
+  '#/contact': 'contact'
 };
 
-const PAGE_TO_PATH = {
-  home: '/',
-  about: '/about',
-  gurukul: '/gurukul',
-  gaushala: '/gaushala',
-  research: '/research',
-  sanskar: '/sanskar',
-  jyotish: '/jyotish',
-  donate: '/donate',
-  admission: '/admission',
-  gallery: '/gallery',
-  notice: '/notice',
-  contact: '/contact'
+const getPageFromHash = () => {
+  const hash = window.location.hash || '';
+  return HASH_MAP[hash] || 'home';
 };
 
 export default function App() {
-  const [activePage, setActivePage] = useState(() => {
-    const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
-    return PATH_MAP[currentPath] || 'home';
-  });
+  const [activePage, setActivePage] = useState(() => getPageFromHash());
 
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('gurukul_theme') || 'dark';
@@ -67,23 +55,22 @@ export default function App() {
     localStorage.setItem('gurukul_theme', theme);
   }, [theme]);
 
-  // Handle URL history state & sync
+  // Handle Hash-based Navigation (Guarantees zero 404s on F5 refresh on static hosts)
   const handlePageChange = (pageId) => {
     setActivePage(pageId);
-    const targetPath = PAGE_TO_PATH[pageId] || '/';
-    if (window.location.pathname !== targetPath) {
-      window.history.pushState({ pageId }, '', targetPath);
+    const targetHash = pageId === 'home' ? '#/' : `#/${pageId}`;
+    if (window.location.hash !== targetHash) {
+      window.location.hash = targetHash;
     }
     window.scrollTo(0, 0);
   };
 
   useEffect(() => {
-    const handlePopState = (e) => {
-      const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
-      setActivePage(PATH_MAP[currentPath] || 'home');
+    const handleHashChange = () => {
+      setActivePage(getPageFromHash());
     };
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
   const toggleTheme = () => {
