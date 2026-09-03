@@ -1,24 +1,26 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Sun, Moon, Search, Menu, X, Sparkles, BookOpen, GraduationCap, Phone, Calendar, Compass, Shield, ArrowRight, Heart, Flame, Compass as JyotishIcon, Image, Bell, Newspaper, Award, Flag } from 'lucide-react';
+import { Sun, Moon, Search, Menu, X, Sparkles, BookOpen, GraduationCap, Phone, Calendar, Compass, Shield, ArrowRight, Heart, Flame, Compass as JyotishIcon, Image, Bell, Newspaper, Award, Flag, Globe } from 'lucide-react';
 
-export default function Navbar({ activePage, setActivePage, theme, toggleTheme, onOpenSearch }) {
+export default function Navbar({ activePage, setActivePage, theme, toggleTheme, lang, onToggleLang, onOpenSearch }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchHovered, setIsSearchHovered] = useState(false);
   const hoverTimeoutRef = useRef(null);
 
+  const isEn = lang === 'en';
+
   const navItems = [
-    { id: 'home', label: 'मुख्य पृष्ठ', desc: 'संस्थान परिचय एवं गतिविधियों का विहंगम अवलोकन', icon: Compass },
-    { id: 'about', label: 'हमारे बारे में', desc: 'संस्थान का इतिहास, उद्देश्य एवं गुरु परंपरा', icon: Shield },
-    { id: 'gurukul', label: 'गुरुकुल', desc: 'संस्कृत शिक्षा, वेद-शास्त्र, आवासीय एवं दिनचर्या', icon: BookOpen },
-    { id: 'gaushala', label: 'गौशाला', desc: 'गौसेवा, संरक्षण, संवर्धन एवं गौ दान', icon: Heart },
-    { id: 'research', label: 'अनुसंधान', desc: 'भारतीय ज्ञान परंपरा एवं संस्कृत साहित्य अध्ययन', icon: Sparkles },
-    { id: 'sanskar', label: 'संस्कार एवं अनुष्ठान', desc: 'रुद्राभिषेक, हवन, यज्ञ, विवाह एवं पूजन', icon: Flame },
-    { id: 'jyotish', label: 'ज्योतिष सेवा', desc: 'जन्म कुंडली परामर्श, मुहूर्त एवं ग्रह शांति', icon: JyotishIcon },
-    { id: 'donate', label: 'सहयोग एवं अनुदान', desc: 'गुरुकुल, गौशाला एवं निःशुल्क अन्नदान में योगदान', icon: Award },
-    { id: 'admission', label: 'प्रवेश प्रक्रिया', desc: 'कक्षा 6 से 12 हेतु आवेदन पत्र एवं नियम', icon: GraduationCap },
-    { id: 'gallery', label: 'चित्रदीर्घा', desc: 'गुरुकुल, गौशाला एवं आयोजनों की तस्वीरें', icon: Image },
-    { id: 'notice', label: 'नवीनतम सूचनाएं', desc: 'प्रेस विज्ञप्ति एवं विशेष धार्मिक कार्यक्रम', icon: Bell },
-    { id: 'contact', label: 'संपर्क करें', desc: 'नैमिषारण्य पता, दूरभाष एवं ऑनलाइन संदेश', icon: Phone }
+    { id: 'home', label: isEn ? 'Home Page' : 'मुख्य पृष्ठ', desc: isEn ? 'Institute introduction & overview of activities' : 'संस्थान परिचय एवं गतिविधियों का विहंगम अवलोकन', icon: Compass },
+    { id: 'about', label: isEn ? 'About Us' : 'हमारे बारे में', desc: isEn ? 'History, objectives and Guru Parampara' : 'संस्थान का इतिहास, उद्देश्य एवं गुरु परंपरा', icon: Shield },
+    { id: 'gurukul', label: isEn ? 'Gurukul' : 'गुरुकुल', desc: isEn ? 'Sanskrit education, Vedas & daily routine' : 'संस्कृत शिक्षा, वेद-शास्त्र, आवासीय एवं दिनचर्या', icon: BookOpen },
+    { id: 'gaushala', label: isEn ? 'Gaushala (Cowshed)' : 'गौशाला', desc: isEn ? 'Cow protection, care and Gau Daan' : 'गौसेवा, संरक्षण, संवर्धन एवं गौ दान', icon: Heart },
+    { id: 'research', label: isEn ? 'Research' : 'अनुसंधान', desc: isEn ? 'Indian Knowledge Systems & Sanskrit studies' : 'भारतीय ज्ञान परंपरा एवं संस्कृत साहित्य अध्ययन', icon: Sparkles },
+    { id: 'sanskar', label: isEn ? 'Rites & Rituals' : 'संस्कार एवं अनुष्ठान', desc: isEn ? 'Rudrabhishek, Yagya, Marriage & Puja' : 'रुद्राभिषेक, हवन, यज्ञ, विवाह एवं पूजन', icon: Flame },
+    { id: 'jyotish', label: isEn ? 'Astrology Services' : 'ज्योतिष सेवा', desc: isEn ? 'Horoscope consultation & auspicious timing' : 'जन्म कुंडली परामर्श, मुहूर्त एवं ग्रह शांति', icon: JyotishIcon },
+    { id: 'donate', label: isEn ? 'Grants & Donation' : 'सहयोग एवं अनुदान', desc: isEn ? 'Support Gurukul, Gaushala & Annadaan' : 'गुरुकुल, गौशाला एवं निःशुल्क अन्नदान में योगदान', icon: Award },
+    { id: 'admission', label: isEn ? 'Admission Process' : 'प्रवेश प्रक्रिया', desc: isEn ? 'Online form & guidelines for Classes 6-12' : 'कक्षा 6 से 12 हेतु आवेदन पत्र एवं नियम', icon: GraduationCap },
+    { id: 'gallery', label: isEn ? 'Photo Gallery' : 'चित्रदीर्घा', desc: isEn ? 'Photos of Gurukul, Gaushala & events' : 'गुरुकुल, गौशाला एवं आयोजनों की तस्वीरें', icon: Image },
+    { id: 'notice', label: isEn ? 'Notices & Bulletins' : 'नवीनतम सूचनाएं', desc: isEn ? 'Press releases & special event announcements' : 'प्रेस विज्ञप्ति एवं विशेष धार्मिक कार्यक्रम', icon: Bell },
+    { id: 'contact', label: isEn ? 'Contact Us' : 'संपर्क करें', desc: isEn ? 'Naimisharanya address, phone & form' : 'नैमिषारण्य पता, दूरभाष एवं ऑनलाइन संदेश', icon: Phone }
   ];
 
   const handleNavClick = (id) => {
@@ -77,13 +79,14 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
         }}
       >
         <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-          <Flag size={14} style={{ color: '#fff' }} /> सत्र 2026-27 प्रवेश प्रारंभ | निःशुल्क आवासीय संस्कृत एवं आधुनिक गुरुकुल शिक्षा
+          <Flag size={14} style={{ color: '#fff' }} /> 
+          {isEn ? 'Admissions Open 2026-27 | Free Residential Sanskrit & Modern Gurukul Education' : 'सत्र 2026-27 प्रवेश प्रारंभ | निःशुल्क आवासीय संस्कृत एवं आधुनिक गुरुकुल शिक्षा'}
         </span>
         <button 
           onClick={() => handleNavClick('admission')}
           style={{ textDecoration: 'underline', color: '#fff', fontWeight: '800', cursor: 'pointer' }}
         >
-          आवेदन करें →
+          {isEn ? 'Apply Now →' : 'आवेदन करें →'}
         </button>
       </div>
 
@@ -101,7 +104,7 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
       >
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '82px' }}>
           
-          {/* Brand Logo & Hindi Title */}
+          {/* Brand Logo & Title */}
           <div 
             onClick={() => handleNavClick('home')}
             style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', cursor: 'pointer' }}
@@ -124,17 +127,41 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
             </div>
             <div>
               <span className="font-serif gold-gradient-text" style={{ fontSize: '1.25rem', fontWeight: '800', display: 'block', lineHeight: 1.15 }}>
-                श्री आत्मानन्द संस्कृत शिक्षण संस्थान
+                {isEn ? 'Shri Atmanand Sanskrit Teaching Institute' : 'श्री आत्मानन्द संस्कृत शिक्षण संस्थान'}
               </span>
               <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)', fontWeight: '600', display: 'block', marginTop: '2px' }}>
-                संस्कृत शिक्षा • संस्कार • संस्कृति • गौसेवा | नैमिषारण्य, सीतापुर (उ.प्र.)
+                {isEn ? 'Sanskrit Education • Culture • Values • Cow Protection | Naimisharanya, Sitapur' : 'संस्कृत शिक्षा • संस्कार • संस्कृति • गौसेवा | नैमिषारण्य, सीतापुर (उ.प्र.)'}
               </span>
             </div>
           </div>
 
-          {/* Right Action Tools (Search, Theme, Donate CTA, Hamburger Menu) */}
+          {/* Right Action Tools (Language Switcher, Search, Theme, Donate CTA, Hamburger Menu) */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
             
+            {/* Language Switcher Toggle */}
+            <button
+              onClick={onToggleLang}
+              title={isEn ? "हिंदी में बदलें" : "Switch to English"}
+              style={{
+                height: '40px',
+                padding: '0 0.85rem',
+                borderRadius: 'var(--radius-full)',
+                border: '1px solid var(--border-glow)',
+                background: 'rgba(212, 175, 55, 0.12)',
+                color: 'var(--accent-gold)',
+                fontWeight: '800',
+                fontSize: '0.82rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                cursor: 'pointer',
+                transition: 'var(--transition)'
+              }}
+            >
+              <Globe size={16} />
+              <span>{isEn ? 'HI | EN' : 'हिंदी | EN'}</span>
+            </button>
+
             {/* Hover Expanding Search */}
             <div
               onMouseEnter={() => setIsSearchHovered(true)}
@@ -143,7 +170,7 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
             >
               <button
                 onClick={onOpenSearch}
-                title="खोजें (Search)"
+                title={isEn ? "Search" : "खोजें"}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -172,7 +199,7 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
                     fontWeight: '600'
                   }}
                 >
-                  खोजें...
+                  {isEn ? 'Search...' : 'खोजें...'}
                 </span>
               </button>
             </div>
@@ -180,7 +207,7 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
             {/* Theme Switcher */}
             <button
               onClick={toggleTheme}
-              title={theme === 'dark' ? "सूर्य गोल्ड लाइट थीम" : "चन्द्र आश्रम डार्क थीम"}
+              title={theme === 'dark' ? "Gold Light Theme" : "Dark Ashram Theme"}
               style={{
                 width: '40px',
                 height: '40px',
@@ -203,7 +230,7 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
               className="saffron-gradient-btn"
               style={{ padding: '0.55rem 1.2rem', fontSize: '0.85rem' }}
             >
-              प्रवेश आवेदन
+              {isEn ? 'Admission Form' : 'प्रवेश आवेदन'}
             </button>
 
             {/* Hover-activated Hamburger Menu Button */}
@@ -231,7 +258,7 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
                 }}
               >
                 <Menu size={22} />
-                <span>मेन्यू</span>
+                <span>{isEn ? 'Menu' : 'मेन्यू'}</span>
               </button>
             </div>
           </div>
@@ -287,9 +314,9 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
               </div>
               <div>
                 <h3 className="font-serif gold-gradient-text" style={{ fontSize: '1.15rem', fontWeight: '800' }}>
-                  श्री आत्मानन्द संस्कृत शिक्षण संस्थान
+                  {isEn ? 'Shri Atmanand Sanskrit Teaching Institute' : 'श्री आत्मानन्द संस्कृत शिक्षण संस्थान'}
                 </h3>
-                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>नैमिषारण्य, सीतापुर (उ.प्र.)</p>
+                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{isEn ? 'Naimisharanya, Sitapur (U.P.)' : 'नैमिषारण्य, सीतापुर (उ.प्र.)'}</p>
               </div>
             </div>
 
@@ -366,14 +393,14 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
           {/* Drawer Quick Contact Footer */}
           <div style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid var(--border-color)', flexShrink: 0 }}>
             <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-              <span>📞 संपर्क / हेल्पलाइन: +91 (05862) 289-ATMANAND</span>
+              <span>📞 {isEn ? 'Helpline: +91 (05862) 289-ATMANAND' : 'संपर्क / हेल्पलाइन: +91 (05862) 289-ATMANAND'}</span>
             </div>
             <div style={{ display: 'flex', gap: '0.5rem' }}>
               <button onClick={() => handleNavClick('donate')} className="gold-outline-btn" style={{ fontSize: '0.78rem', padding: '0.35rem 0.85rem' }}>
-                🙏 सहयोग / दान करें
+                🙏 {isEn ? 'Donate / Support' : 'सहयोग / दान करें'}
               </button>
               <button onClick={() => handleNavClick('contact')} className="saffron-gradient-btn" style={{ fontSize: '0.78rem', padding: '0.35rem 0.85rem' }}>
-                संपर्क फॉर्म
+                {isEn ? 'Contact Form' : 'संपर्क फॉर्म'}
               </button>
             </div>
           </div>

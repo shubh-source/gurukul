@@ -4,6 +4,8 @@ import Footer from './components/Footer';
 import SocialFloating from './components/SocialFloating';
 import AudioPlayer from './components/AudioPlayer';
 import SearchModal from './components/SearchModal';
+import WelcomeModal from './components/WelcomeModal';
+import LanguageModal from './components/LanguageModal';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -46,6 +48,10 @@ export default function App() {
     return localStorage.getItem('gurukul_theme') || 'dark';
   });
 
+  const [lang, setLang] = useState(() => {
+    return localStorage.getItem('gurukul_lang') || 'hi';
+  });
+
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   // Sync theme with HTML attribute
@@ -53,6 +59,12 @@ export default function App() {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('gurukul_theme', theme);
   }, [theme]);
+
+  // Sync language with HTML lang attribute
+  useEffect(() => {
+    document.documentElement.setAttribute('lang', lang);
+    localStorage.setItem('gurukul_lang', lang);
+  }, [lang]);
 
   // Handle Hash-based Navigation
   const handlePageChange = (pageId) => {
@@ -76,30 +88,41 @@ export default function App() {
     setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
   };
 
+  const toggleLang = () => {
+    const nextLang = lang === 'hi' ? 'en' : 'hi';
+    setLang(nextLang);
+    localStorage.setItem('gurukul_lang', nextLang);
+  };
+
   const renderPage = () => {
     switch (activePage) {
-      case 'about': return <About onNavigate={handlePageChange} />;
-      case 'gurukul': return <Gurukul onNavigate={handlePageChange} />;
-      case 'gaushala': return <Gaushala onNavigate={handlePageChange} />;
-      case 'research': return <Research onNavigate={handlePageChange} />;
-      case 'sanskar': return <Sanskar onNavigate={handlePageChange} />;
-      case 'jyotish': return <Jyotish onNavigate={handlePageChange} />;
-      case 'donate': return <Donate onNavigate={handlePageChange} />;
-      case 'admission': return <Admission onNavigate={handlePageChange} />;
-      case 'gallery': return <Gallery onNavigate={handlePageChange} />;
-      case 'notice': return <Notice onNavigate={handlePageChange} />;
-      case 'contact': return <Contact onNavigate={handlePageChange} />;
-      default: return <Home onNavigate={handlePageChange} />;
+      case 'about': return <About onNavigate={handlePageChange} lang={lang} />;
+      case 'gurukul': return <Gurukul onNavigate={handlePageChange} lang={lang} />;
+      case 'gaushala': return <Gaushala onNavigate={handlePageChange} lang={lang} />;
+      case 'research': return <Research onNavigate={handlePageChange} lang={lang} />;
+      case 'sanskar': return <Sanskar onNavigate={handlePageChange} lang={lang} />;
+      case 'jyotish': return <Jyotish onNavigate={handlePageChange} lang={lang} />;
+      case 'donate': return <Donate onNavigate={handlePageChange} lang={lang} />;
+      case 'admission': return <Admission onNavigate={handlePageChange} lang={lang} />;
+      case 'gallery': return <Gallery onNavigate={handlePageChange} lang={lang} />;
+      case 'notice': return <Notice onNavigate={handlePageChange} lang={lang} />;
+      case 'contact': return <Contact onNavigate={handlePageChange} lang={lang} />;
+      default: return <Home onNavigate={handlePageChange} lang={lang} />;
     }
   };
 
   return (
     <div className="page-container">
+      <LanguageModal currentLang={lang} onSelectLanguage={(l) => setLang(l)} />
+      <WelcomeModal onNavigate={handlePageChange} lang={lang} />
+
       <Navbar
         activePage={activePage}
         setActivePage={handlePageChange}
         theme={theme}
         toggleTheme={toggleTheme}
+        lang={lang}
+        onToggleLang={toggleLang}
         onOpenSearch={() => setIsSearchOpen(true)}
       />
 
@@ -107,7 +130,7 @@ export default function App() {
         {renderPage()}
       </main>
 
-      <Footer setActivePage={handlePageChange} />
+      <Footer setActivePage={handlePageChange} lang={lang} />
 
       <SocialFloating />
       <AudioPlayer />
@@ -115,6 +138,7 @@ export default function App() {
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
         onNavigate={handlePageChange}
+        lang={lang}
       />
     </div>
   );
