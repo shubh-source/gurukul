@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Images } from '../assets/images';
-import { X, Sparkles, ArrowRight, Shield, Volume2 } from 'lucide-react';
+import { X, Sparkles, ArrowRight, Shield, BookOpen, Heart, Flame, Flag } from 'lucide-react';
 
 export default function WelcomeModal({ onNavigate }) {
   const [isOpen, setIsOpen] = useState(true);
@@ -103,7 +103,6 @@ export default function WelcomeModal({ onNavigate }) {
               borderRadius: '50%',
               background: 'linear-gradient(135deg, var(--accent-vermillion) 0%, var(--accent-gold) 100%)',
               color: '#fff',
-              fontSize: '2rem',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -111,11 +110,11 @@ export default function WelcomeModal({ onNavigate }) {
               boxShadow: '0 0 25px rgba(212,175,55,0.6)'
             }}
           >
-            🚩
+            <Flag size={28} style={{ color: '#fff' }} />
           </div>
 
           <span className="badge-gold" style={{ marginBottom: '0.5rem', display: 'inline-block' }}>
-            🚩 नैमिषारण्य पावन तीर्थ क्षेत्र (सीतापुर, उत्तर प्रदेश)
+            नैमिषारण्य पावन तीर्थ क्षेत्र (सीतापुर, उत्तर प्रदेश)
           </span>
 
           <h2 className="font-serif gold-gradient-text" style={{ fontSize: '1.8rem', fontWeight: '900', marginBottom: '0.75rem', lineHeight: 1.25 }}>
@@ -127,16 +126,16 @@ export default function WelcomeModal({ onNavigate }) {
           </p>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.75rem', marginBottom: '1.75rem', fontSize: '0.8rem' }}>
-            <div style={{ padding: '0.65rem', borderRadius: 'var(--radius-sm)', background: 'var(--bg-secondary)', border: '1px solid var(--border-color)' }}>
-              <div style={{ fontSize: '1.2rem', marginBottom: '0.2rem' }}>📖</div>
+            <div style={{ padding: '0.75rem 0.5rem', borderRadius: 'var(--radius-sm)', background: 'var(--bg-secondary)', border: '1px solid var(--border-color)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.35rem' }}>
+              <BookOpen size={22} style={{ color: 'var(--accent-gold)' }} />
               <strong>वेद-शास्त्र शिक्षा</strong>
             </div>
-            <div style={{ padding: '0.65rem', borderRadius: 'var(--radius-sm)', background: 'var(--bg-secondary)', border: '1px solid var(--border-color)' }}>
-              <div style={{ fontSize: '1.2rem', marginBottom: '0.2rem' }}>🐄</div>
+            <div style={{ padding: '0.75rem 0.5rem', borderRadius: 'var(--radius-sm)', background: 'var(--bg-secondary)', border: '1px solid var(--border-color)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.35rem' }}>
+              <Heart size={22} style={{ color: 'var(--accent-emerald)' }} />
               <strong>गौशाला गौसेवा</strong>
             </div>
-            <div style={{ padding: '0.65rem', borderRadius: 'var(--radius-sm)', background: 'var(--bg-secondary)', border: '1px solid var(--border-color)' }}>
-              <div style={{ fontSize: '1.2rem', marginBottom: '0.2rem' }}>🪔</div>
+            <div style={{ padding: '0.75rem 0.5rem', borderRadius: 'var(--radius-sm)', background: 'var(--bg-secondary)', border: '1px solid var(--border-color)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.35rem' }}>
+              <Flame size={22} style={{ color: 'var(--accent-saffron)' }} />
               <strong>धार्मिक अनुष्ठान</strong>
             </div>
           </div>

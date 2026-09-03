@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Images } from '../assets/images';
-import { ArrowRight, Sparkles, BookOpen, Clock, ShieldCheck, Award, Heart, Flame, Compass as JyotishIcon, CheckCircle2, ChevronRight, Bell, FileText, ChevronDown, ChevronUp } from 'lucide-react';
+import { ArrowRight, Sparkles, BookOpen, Clock, ShieldCheck, Award, Heart, Flame, Compass as JyotishIcon, CheckCircle2, ChevronRight, Bell, FileText, ChevronDown, ChevronUp, Shield, Flag } from 'lucide-react';
 
 const OBJECTIVES = [
-  { id: '1', title: 'संस्कृत शिक्षा एवं वेद-शास्त्र', icon: '📖', color: 'var(--accent-saffron)', desc: 'वेद, वेदांग, संस्कृत साहित्य एवं व्याकरण का गहन अध्ययन तथा आधुनिक विषयों का समन्वय।', details: '• अष्टाध्यायी व्याकरण पाठ्यक्रमानुयायी\n• ऋग्वेद, यजुर्वेद एवं सामवेद पाठांतर\n• पाणिनीय शिक्षा एवं कर्मकांड प्रशिक्षण\n• आधुनिक कंप्यूटर विज्ञान एवं व्यावहारिक अंग्रेजी' },
-  { id: '2', title: 'गुरुकुल परंपरा एवं अनुशासन', icon: '🏛️', color: 'var(--accent-gold)', desc: 'आवासीय वातावरण में विद्यार्थियों का सर्वांगीण विकास, सदाचार, योग एवं चरित्र निर्माण।', details: '• 100% निःशुल्क छात्रावास व सात्त्विक आहार\n• प्रातः ब्रह्म मुहूर्त जागरण व प्राणायाम\n• योगासन, धनुर्विद्या एवं क्रीड़ा\n• गुरु-शिष्य परंपरा में संस्कार सिंचन' },
-  { id: '3', title: 'भारतीय संस्कार एवं धर्म निष्ठा', icon: '🪔', color: 'var(--accent-vermillion)', desc: 'वैदिक रीति-रिवाजों, अनुष्ठान, संध्या-वंदन एवं सांस्कृतिक मूल्यों का संरक्षण।', details: '• नित्य प्रातः-सायं यज्ञाहुति व सन्ध्या-वन्दन\n• भगवद गीता व उपनिषद पाठांतर\n• संस्कार अनुष्ठान व स्तोत्र गायन\n• भारतीय पर्व उत्सव आयोजन' },
-  { id: '4', title: 'गौसेवा एवं गौवंश संवर्धन', icon: '🐄', color: 'var(--accent-emerald)', desc: 'देशी गिर एवं कपिला गौवंश का संरक्षण, नित्य गौसेवा तथा जैविक कृषि संवर्धन।', details: '• देशी गिर व कपिला गौवंश पालन\n• नित्य हरा चारा व पशुआहार सेवा\n• शुद्ध A2 गो-दुग्ध व घृत उत्पादन\n• जैविक गो-कृषि संवर्धन' },
-  { id: '5', title: 'अनुसंधान एवं पाण्डुलिपि कार्य', icon: '📜', color: 'var(--accent-indigo)', desc: 'भारतीय ज्ञान परंपरा एवं प्राचीन संस्कृत ग्रंथों का आधुनिक दृष्टिकोण से अध्ययन।', details: '• संस्कृत पाण्डुलिपि संरक्षण प्रकल्प\n• वेद-विज्ञान एवं खगोल शोध\n• प्राचीन दर्शन व न्याय अध्ययन\n• शोध पत्र व प्रकाशन' }
+  { id: '1', title: 'संस्कृत शिक्षा एवं वेद-शास्त्र', icon: BookOpen, color: 'var(--accent-saffron)', desc: 'वेद, वेदांग, संस्कृत साहित्य एवं व्याकरण का गहन अध्ययन तथा आधुनिक विषयों का समन्वय।', details: '• अष्टाध्यायी व्याकरण पाठ्यक्रमानुयायी\n• ऋग्वेद, यजुर्वेद एवं सामवेद पाठांतर\n• पाणिनीय शिक्षा एवं कर्मकांड प्रशिक्षण\n• आधुनिक कंप्यूटर विज्ञान एवं व्यावहारिक अंग्रेजी' },
+  { id: '2', title: 'गुरुकुल परंपरा एवं अनुशासन', icon: Shield, color: 'var(--accent-gold)', desc: 'आवासीय वातावरण में विद्यार्थियों का सर्वांगीण विकास, सदाचार, योग एवं चरित्र निर्माण।', details: '• 100% निःशुल्क छात्रावास व सात्त्विक आहार\n• प्रातः ब्रह्म मुहूर्त जागरण व प्राणायाम\n• योगासन, धनुर्विद्या एवं क्रीड़ा\n• गुरु-शिष्य परंपरा में संस्कार सिंचन' },
+  { id: '3', title: 'भारतीय संस्कार एवं धर्म निष्ठा', icon: Flame, color: 'var(--accent-vermillion)', desc: 'वैदिक रीति-रिवाजों, अनुष्ठान, संध्या-वंदन एवं सांस्कृतिक मूल्यों का संरक्षण।', details: '• नित्य प्रातः-सायं यज्ञाहुति व सन्ध्या-वन्दन\n• भगवद गीता व उपनिषद पाठांतर\n• संस्कार अनुष्ठान व स्तोत्र गायन\n• भारतीय पर्व उत्सव आयोजन' },
+  { id: '4', title: 'गौसेवा एवं गौवंश संवर्धन', icon: Heart, color: 'var(--accent-emerald)', desc: 'देशी गिर एवं कपिला गौवंश का संरक्षण, नित्य गौसेवा तथा जैविक कृषि संवर्धन।', details: '• देशी गिर व कपिला गौवंश पालन\n• नित्य हरा चारा व पशुआहार सेवा\n• शुद्ध A2 गो-दुग्ध व घृत उत्पादन\n• जैविक गो-कृषि संवर्धन' },
+  { id: '5', title: 'अनुसंधान एवं पाण्डुलिपि कार्य', icon: Sparkles, color: 'var(--accent-indigo)', desc: 'भारतीय ज्ञान परंपरा एवं प्राचीन संस्कृत ग्रंथों का आधुनिक दृष्टिकोण से अध्ययन।', details: '• संस्कृत पाण्डुलिपि संरक्षण प्रकल्प\n• वेद-विज्ञान एवं खगोल शोध\n• प्राचीन दर्शन व न्याय अध्ययन\n• शोध पत्र व प्रकाशन' }
 ];
 
 export default function Home({ onNavigate }) {
@@ -34,7 +34,7 @@ export default function Home({ onNavigate }) {
           {/* Left Text in Hindi */}
           <div>
             <div className="section-tag" style={{ marginBottom: '1.25rem' }}>
-              🚩 पावन तीर्थ क्षेत्र — नैमिषारण्य, सीतापुर (उत्तर प्रदेश)
+              <Flag size={14} style={{ color: 'var(--accent-saffron)' }} /> पावन तीर्थ क्षेत्र — नैमिषारण्य, सीतापुर (उत्तर प्रदेश)
             </div>
 
             <h1 className="font-serif" style={{ fontSize: 'clamp(2.1rem, 4.8vw, 3.4rem)', fontWeight: '900', lineHeight: 1.2, marginBottom: '1.25rem' }}>
@@ -162,18 +162,19 @@ export default function Home({ onNavigate }) {
         </div>
       </section>
 
-      {/* CORE OBJECTIVES SECTION WITH INTERACTIVE ACCORDION TOGGLES */}
+      {/* CORE OBJECTIVES SECTION WITH VECTOR ICONS */}
       <section style={{ padding: '5rem 0', background: 'var(--bg-secondary)', borderTop: '1px solid var(--border-color)' }}>
         <div className="container">
           
           <div className="section-header">
             <span className="section-tag">संस्थान के प्रमुख उद्देश्य</span>
             <h2 className="section-title font-serif">पाँच मुख्य आधार स्तंभ</h2>
-            <p className="section-subtitle">प्रत्येक कार्ड पर क्लिक करके विस्तृत विवरण (Details Toggle) देखें</p>
+            <p className="section-subtitle">प्रत्येक कार्ड पर क्लिक करके विस्तृत विवरण देखें</p>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
             {OBJECTIVES.map((obj) => {
+              const IconComp = obj.icon;
               const isExpanded = expandedCard === obj.id;
               return (
                 <div 
@@ -186,7 +187,23 @@ export default function Home({ onNavigate }) {
                     transition: 'var(--transition)'
                   }}
                 >
-                  <div style={{ fontSize: '2.4rem', marginBottom: '1rem' }}>{obj.icon}</div>
+                  <div 
+                    style={{ 
+                      width: '52px',
+                      height: '52px',
+                      borderRadius: '50%',
+                      background: 'var(--bg-secondary)',
+                      border: '1px solid var(--border-color)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginBottom: '1.25rem',
+                      color: obj.color
+                    }}
+                  >
+                    <IconComp size={26} />
+                  </div>
+                  
                   <h3 className="font-serif" style={{ fontSize: '1.2rem', fontWeight: '700', marginBottom: '0.6rem', color: obj.color }}>
                     {obj.title}
                   </h3>
@@ -257,8 +274,9 @@ export default function Home({ onNavigate }) {
                   विद्यार्थियों के लिए अनुशासित जीवनशैली, प्रातः ब्रह्म मुहूर्त जागरण, संध्या-वंदन, वेद पाठ, सात्त्विक भोजन तथा उत्तम छात्रावास व्यवस्था।
                 </p>
                 <div style={{ display: 'flex', gap: '1rem', fontSize: '0.85rem', color: 'var(--accent-saffron)', fontWeight: '700', marginBottom: '1.5rem' }}>
-                  <span>👦 आयु: 10 – 20 वर्ष</span>
-                  <span>📚 कक्षा: 6 – 12</span>
+                  <span>आयु: 10 – 20 वर्ष</span>
+                  <span>•</span>
+                  <span>कक्षा: 6 – 12</span>
                 </div>
               </div>
               <button onClick={() => onNavigate('gurukul')} className="gold-outline-btn" style={{ width: '100%', justifyContent: 'center' }}>
@@ -277,8 +295,9 @@ export default function Home({ onNavigate }) {
                   भारतीय संस्कृति में गाय को पूजनीय माना गया है। हमारी गौशाला में देशी गायों का संवर्धन, नित्य भोजन-चारा एवं प्राथमिक चिकित्सा सेवा दी जाती है।
                 </p>
                 <div style={{ display: 'flex', gap: '1rem', fontSize: '0.85rem', color: 'var(--accent-emerald)', fontWeight: '700', marginBottom: '1.5rem' }}>
-                  <span>🐄 देशी गिर व कपिला गौवंश</span>
-                  <span>🌾 हरा चारा व जैविक सेवा</span>
+                  <span>देशी गिर व कपिला गौवंश</span>
+                  <span>•</span>
+                  <span>हरा चारा व जैविक सेवा</span>
                 </div>
               </div>
               <button onClick={() => onNavigate('gaushala')} className="saffron-gradient-btn" style={{ width: '100%', justifyContent: 'center' }}>
@@ -302,26 +321,34 @@ export default function Home({ onNavigate }) {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem', marginBottom: '2.5rem' }}>
-            <div className="glass-panel" style={{ padding: '1.5rem', textAlignment: 'center', background: 'var(--bg-primary)' }}>
-              <div style={{ fontSize: '2.2rem', marginBottom: '0.5rem' }}>🔱</div>
+            <div className="glass-panel" style={{ padding: '1.75rem 1.5rem', textAlign: 'center', background: 'var(--bg-primary)' }}>
+              <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'var(--bg-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 0.75rem auto', color: 'var(--accent-gold)' }}>
+                <Flame size={24} />
+              </div>
               <h4 className="font-serif" style={{ fontSize: '1.15rem', fontWeight: '700', marginBottom: '0.4rem' }}>रुद्राभिषेक</h4>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>शिव पूजन एवं द्रव्य अभिषेक</p>
             </div>
 
-            <div className="glass-panel" style={{ padding: '1.5rem', textAlignment: 'center', background: 'var(--bg-primary)' }}>
-              <div style={{ fontSize: '2.2rem', marginBottom: '0.5rem' }}>🔥</div>
+            <div className="glass-panel" style={{ padding: '1.75rem 1.5rem', textAlign: 'center', background: 'var(--bg-primary)' }}>
+              <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'var(--bg-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 0.75rem auto', color: 'var(--accent-saffron)' }}>
+                <Sparkles size={24} />
+              </div>
               <h4 className="font-serif" style={{ fontSize: '1.15rem', fontWeight: '700', marginBottom: '0.4rem' }}>हवन / यज्ञ</h4>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>ग्रह शांति एवं विश्व कल्याण यज्ञ</p>
             </div>
 
-            <div className="glass-panel" style={{ padding: '1.5rem', textAlignment: 'center', background: 'var(--bg-primary)' }}>
-              <div style={{ fontSize: '2.2rem', marginBottom: '0.5rem' }}>🪔</div>
+            <div className="glass-panel" style={{ padding: '1.75rem 1.5rem', textAlign: 'center', background: 'var(--bg-primary)' }}>
+              <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'var(--bg-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 0.75rem auto', color: 'var(--accent-vermillion)' }}>
+                <Shield size={24} />
+              </div>
               <h4 className="font-serif" style={{ fontSize: '1.15rem', fontWeight: '700', marginBottom: '0.4rem' }}>विवाह संस्कार</h4>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>सप्तपदी एवं पाणिग्रहण संस्कार</p>
             </div>
 
-            <div className="glass-panel" style={{ padding: '1.5rem', textAlignment: 'center', background: 'var(--bg-primary)' }}>
-              <div style={{ fontSize: '2.2rem', marginBottom: '0.5rem' }}>✨</div>
+            <div className="glass-panel" style={{ padding: '1.75rem 1.5rem', textAlign: 'center', background: 'var(--bg-primary)' }}>
+              <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'var(--bg-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 0.75rem auto', color: 'var(--accent-emerald)' }}>
+                <Award size={24} />
+              </div>
               <h4 className="font-serif" style={{ fontSize: '1.15rem', fontWeight: '700', marginBottom: '0.4rem' }}>विशेष पूजन</h4>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>सत्यनारायण कथा एवं अनुष्ठान</p>
             </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Sun, Moon, Search, Menu, X, Sparkles, BookOpen, GraduationCap, Phone, Calendar, Compass, Shield, ArrowRight, Heart, Flame, Compass as JyotishIcon, Image, Bell, Newspaper, Award } from 'lucide-react';
+import { Sun, Moon, Search, Menu, X, Sparkles, BookOpen, GraduationCap, Phone, Calendar, Compass, Shield, ArrowRight, Heart, Flame, Compass as JyotishIcon, Image, Bell, Newspaper, Award, Flag } from 'lucide-react';
 
 export default function Navbar({ activePage, setActivePage, theme, toggleTheme, onOpenSearch }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -76,7 +76,9 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
           gap: '0.6rem'
         }}
       >
-        <span>🚩 सत्र 2026-27 प्रवेश प्रारंभ | निःशुल्क आवासीय संस्कृत एवं आधुनिक गुरुकुल शिक्षा</span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+          <Flag size={14} style={{ color: '#fff' }} /> सत्र 2026-27 प्रवेश प्रारंभ | निःशुल्क आवासीय संस्कृत एवं आधुनिक गुरुकुल शिक्षा
+        </span>
         <button 
           onClick={() => handleNavClick('admission')}
           style={{ textDecoration: 'underline', color: '#fff', fontWeight: '800', cursor: 'pointer' }}
@@ -115,11 +117,10 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
                 justifyContent: 'center',
                 boxShadow: '0 0 15px rgba(183, 28, 28, 0.4)',
                 color: '#fff',
-                fontSize: '1.5rem',
                 flexShrink: 0
               }}
             >
-              🚩
+              <Flag size={22} style={{ color: '#fff' }} />
             </div>
             <div>
               <span className="font-serif gold-gradient-text" style={{ fontSize: '1.25rem', fontWeight: '800', display: 'block', lineHeight: 1.15 }}>
@@ -281,7 +282,9 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
           {/* Drawer Header */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)', flexShrink: 0 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-              <span style={{ fontSize: '1.6rem' }}>🚩</span>
+              <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'var(--accent-gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0f0d0e' }}>
+                <Flag size={16} />
+              </div>
               <div>
                 <h3 className="font-serif gold-gradient-text" style={{ fontSize: '1.15rem', fontWeight: '800' }}>
                   श्री आत्मानन्द संस्कृत शिक्षण संस्थान
