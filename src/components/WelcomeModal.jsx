@@ -3,7 +3,7 @@ import { Images } from '../assets/images';
 import { X, Sparkles, ArrowRight, Shield, Volume2 } from 'lucide-react';
 
 export default function WelcomeModal({ onNavigate }) {
-  const [isOpen, setIsOpen] = useState(true); // Always open on page load & refresh
+  const [isOpen, setIsOpen] = useState(true);
 
   const handleClose = () => {
     setIsOpen(false);
@@ -104,7 +104,7 @@ export default function WelcomeModal({ onNavigate }) {
           </div>
 
           <span className="badge-gold" style={{ marginBottom: '0.5rem', display: 'inline-block' }}>
-            👑 Pro Portal — नैमिषारण्य पावन तीर्थ क्षेत्र (सीतापुर, उ.प्र.)
+            🚩 नैमिषारण्य पावन तीर्थ क्षेत्र (सीतापुर, उत्तर प्रदेश)
           </span>
 
           <h2 className="font-serif gold-gradient-text" style={{ fontSize: '1.8rem', fontWeight: '900', marginBottom: '0.75rem', lineHeight: 1.25 }}>
