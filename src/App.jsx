@@ -4,7 +4,6 @@ import Footer from './components/Footer';
 import SocialFloating from './components/SocialFloating';
 import AudioPlayer from './components/AudioPlayer';
 import SearchModal from './components/SearchModal';
-import WelcomeModal from './components/WelcomeModal';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -55,7 +54,7 @@ export default function App() {
     localStorage.setItem('gurukul_theme', theme);
   }, [theme]);
 
-  // Handle Hash-based Navigation (Guarantees zero 404s on F5 refresh on static hosts)
+  // Handle Hash-based Navigation
   const handlePageChange = (pageId) => {
     setActivePage(pageId);
     const targetHash = pageId === 'home' ? '#/' : `#/${pageId}`;
@@ -96,8 +95,6 @@ export default function App() {
 
   return (
     <div className="page-container">
-      <WelcomeModal onNavigate={handlePageChange} />
-
       <Navbar
         activePage={activePage}
         setActivePage={handlePageChange}

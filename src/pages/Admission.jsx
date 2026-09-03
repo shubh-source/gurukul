@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GraduationCap, CheckCircle2, FileText, Printer, ArrowRight, MessageSquare, Database, Send } from 'lucide-react';
+import { GraduationCap, CheckCircle2, FileText, Printer, ArrowRight } from 'lucide-react';
 
 const ADMISSION_STEPS = [
   { step: '1', title: 'प्रवेश आवेदन', desc: 'ऑनलाइन अथवा संस्थान कार्यालय से निःशुल्क प्रवेश फॉर्म प्राप्त कर भरें।' },
@@ -10,7 +10,6 @@ const ADMISSION_STEPS = [
 ];
 
 export default function Admission({ onNavigate }) {
-  const [submissionTier, setSubmissionTier] = useState('whatsapp'); // 'whatsapp' (Standard ₹6k) vs 'sheets' (Pro ₹8k-10k)
   const [formData, setFormData] = useState({
     studentName: '',
     dob: '',
@@ -39,25 +38,22 @@ export default function Admission({ onNavigate }) {
       setSlip({
         regNo: regNum,
         date: today,
-        tier: submissionTier,
         ...formData
       });
 
-      if (submissionTier === 'whatsapp') {
-        // Standard Tier: Open WhatsApp with pre-formatted student text
-        const textMessage = `🚩 *श्री आत्मानन्द संस्कृत शिक्षण संस्थान — प्रवेश आवेदन पत्र*\n\n` +
-          `• *पंजीकरण सं:* ${regNum}\n` +
-          `• *विद्यार्थी नाम:* ${formData.studentName}\n` +
-          `• *जन्म तिथि:* ${formData.dob}\n` +
-          `• *पिता का नाम:* ${formData.fatherName}\n` +
-          `• *प्रवेश कक्षा:* ${formData.targetClass}\n` +
-          `• *मोबाइल नंबर:* ${formData.mobile}\n` +
-          `• *पता:* ${formData.address}`;
-        
-        const whatsappUrl = `https://api.whatsapp.com/send?phone=919876543210&text=${encodeURIComponent(textMessage)}`;
-        window.open(whatsappUrl, '_blank');
-      }
-    }, 600);
+      // WhatsApp Direct Message
+      const textMessage = `🚩 *श्री आत्मानन्द संस्कृत शिक्षण संस्थान — प्रवेश आवेदन पत्र*\n\n` +
+        `• *पंजीकरण सं:* ${regNum}\n` +
+        `• *विद्यार्थी नाम:* ${formData.studentName}\n` +
+        `• *जन्म तिथि:* ${formData.dob}\n` +
+        `• *पिता का नाम:* ${formData.fatherName}\n` +
+        `• *प्रवेश कक्षा:* ${formData.targetClass}\n` +
+        `• *मोबाइल नंबर:* ${formData.mobile}\n` +
+        `• *पता:* ${formData.address}`;
+      
+      const whatsappUrl = `https://api.whatsapp.com/send?phone=919876543210&text=${encodeURIComponent(textMessage)}`;
+      window.open(whatsappUrl, '_blank');
+    }, 500);
   };
 
   return (
@@ -168,15 +164,9 @@ export default function Admission({ onNavigate }) {
                 <strong>स्थायी पता:</strong> {slip.address}
               </div>
 
-              {slip.tier === 'sheets' ? (
-                <div style={{ textAlign: 'center', color: 'var(--accent-emerald)', fontWeight: '700', marginBottom: '1.5rem', fontSize: '0.95rem' }}>
-                  ✓ Pro Tier Active: डेटाबेस & गूगल शीट्स (Real-Time Database) में सुरक्षित सेव किया गया!
-                </div>
-              ) : (
-                <div style={{ textAlign: 'center', color: 'var(--accent-saffron)', fontWeight: '700', marginBottom: '1.5rem', fontSize: '0.95rem' }}>
-                  ✓ Standard Tier: व्हाट्सएप्प (WhatsApp Direct Message) पर आवेदन भेज दिया गया है।
-                </div>
-              )}
+              <div style={{ textAlign: 'center', color: 'var(--accent-emerald)', fontWeight: '700', marginBottom: '1.5rem', fontSize: '0.95rem' }}>
+                ✓ आपका आवेदन जमा हो गया है एवं व्हाट्सएप्प (WhatsApp Message) पर भेज दिया गया है।
+              </div>
 
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
                 <button onClick={() => window.print()} className="gold-outline-btn">
@@ -188,69 +178,8 @@ export default function Admission({ onNavigate }) {
               </div>
             </div>
           ) : (
-            /* ONLINE ADMISSION APPLICATION FORM WITH TIER SWITCHER FOR DEMO */
+            /* ONLINE ADMISSION APPLICATION FORM */
             <div className="glass-panel" style={{ maxWidth: '760px', margin: '0 auto', padding: '2.5rem', background: 'var(--bg-secondary)', border: '1px solid var(--accent-gold)' }}>
-              
-              {/* Agency / Demo Tier Switcher Toggle */}
-              <div 
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  padding: '0.75rem 1rem',
-                  borderRadius: 'var(--radius-md)',
-                  background: 'var(--bg-primary)',
-                  border: '1px solid var(--border-color)',
-                  marginBottom: '1.75rem',
-                  flexWrap: 'wrap',
-                  gap: '0.75rem'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: '700' }}>
-                  <span>⚙️ सेम्बल / डेमो सबमिशन मोड:</span>
-                </div>
-                
-                <div style={{ display: 'flex', gap: '0.5rem' }}>
-                  <button
-                    type="button"
-                    onClick={() => setSubmissionTier('whatsapp')}
-                    style={{
-                      padding: '0.4rem 0.85rem',
-                      borderRadius: 'var(--radius-full)',
-                      background: submissionTier === 'whatsapp' ? '#25d366' : 'var(--bg-secondary)',
-                      color: submissionTier === 'whatsapp' ? '#fff' : 'var(--text-secondary)',
-                      fontWeight: '700',
-                      fontSize: '0.78rem',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.35rem'
-                    }}
-                  >
-                    <MessageSquare size={13} /> स्टैण्डर्ड ₹6k (WhatsApp Direct)
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setSubmissionTier('sheets')}
-                    style={{
-                      padding: '0.4rem 0.85rem',
-                      borderRadius: 'var(--radius-full)',
-                      background: submissionTier === 'sheets' ? 'var(--accent-gold)' : 'var(--bg-secondary)',
-                      color: submissionTier === 'sheets' ? '#0f0d0e' : 'var(--text-secondary)',
-                      fontWeight: '700',
-                      fontSize: '0.78rem',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.35rem'
-                    }}
-                  >
-                    <Database size={13} /> प्रो ₹8k-10k (Google Sheet & Email Sync)
-                  </button>
-                </div>
-              </div>
-
               <h3 className="font-serif" style={{ fontSize: '1.6rem', fontWeight: '800', marginBottom: '1.5rem', textAlign: 'center' }}>
                 ऑनलाइन प्रवेश आवेदन पत्र (Session 2026-27)
               </h3>
@@ -320,9 +249,7 @@ export default function Admission({ onNavigate }) {
                   className="saffron-gradient-btn" 
                   style={{ width: '100%', justifyContent: 'center', fontSize: '1.05rem', marginTop: '0.5rem' }}
                 >
-                  {isSubmitting ? 'आवेदन संसाधित हो रहा है...' : (
-                    submissionTier === 'whatsapp' ? 'आवेदन जमा करें (WhatsApp Message + Printable Slip)' : 'आवेदन जमा करें (Live Database Sync + Printable Slip)'
-                  )}
+                  {isSubmitting ? 'आवेदन संसाधित हो रहा है...' : 'आवेदन जमा करें (WhatsApp Message + Printable Slip)'}
                 </button>
 
               </form>
