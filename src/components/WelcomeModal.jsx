@@ -5,12 +5,23 @@ import { X, Sparkles, ArrowRight, Shield, Volume2 } from 'lucide-react';
 export default function WelcomeModal({ onNavigate }) {
   const [isOpen, setIsOpen] = useState(true);
 
+  const triggerUnblurAnimation = () => {
+    const mainEl = document.querySelector('.main-content');
+    if (mainEl) {
+      mainEl.classList.remove('unblur-entrance');
+      void mainEl.offsetWidth; // trigger reflow
+      mainEl.classList.add('unblur-entrance');
+    }
+  };
+
   const handleClose = () => {
     setIsOpen(false);
+    triggerUnblurAnimation();
   };
 
   const handleEnterCampus = (page) => {
-    handleClose();
+    setIsOpen(false);
+    triggerUnblurAnimation();
     if (page) onNavigate(page);
   };
 
