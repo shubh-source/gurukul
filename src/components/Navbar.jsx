@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Sun, Moon, Search, Menu, X, Sparkles, BookOpen, GraduationCap, Phone, Calendar, Compass, Shield, ArrowRight, Heart, Flame, Compass as JyotishIcon, Image, Bell, Newspaper, Award } from 'lucide-react';
+import { Sun, Moon, Search, Menu, X, Sparkles, BookOpen, GraduationCap, Phone, Calendar, Compass, Shield, ArrowRight, Heart, Flame, Compass as JyotishIcon, Image, Bell, Newspaper, Award, Crown } from 'lucide-react';
 
 export default function Navbar({ activePage, setActivePage, theme, toggleTheme, onOpenSearch }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -76,7 +76,7 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
           gap: '0.6rem'
         }}
       >
-        <span>🚩 सत्र 2026-27 प्रवेश प्रारंभ | निःशुल्क आवासीय संस्कृत एवं आधुनिक गुरुकुल शिक्षा</span>
+        <span>👑 PRO PORTAL | सत्र 2026-27 प्रवेश प्रारंभ | निःशुल्क आवासीय संस्कृत एवं आधुनिक गुरुकुल</span>
         <button 
           onClick={() => handleNavClick('admission')}
           style={{ textDecoration: 'underline', color: '#fff', fontWeight: '800', cursor: 'pointer' }}
@@ -122,9 +122,14 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
               🚩
             </div>
             <div>
-              <span className="font-serif gold-gradient-text" style={{ fontSize: '1.25rem', fontWeight: '800', display: 'block', lineHeight: 1.15 }}>
-                श्री आत्मानन्द संस्कृत शिक्षण संस्थान
-              </span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                <span className="font-serif gold-gradient-text" style={{ fontSize: '1.25rem', fontWeight: '800', display: 'block', lineHeight: 1.15 }}>
+                  श्री आत्मानन्द संस्कृत शिक्षण संस्थान
+                </span>
+                <span className="badge-gold" style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem', border: '1px solid var(--accent-gold)' }}>
+                  👑 PRO
+                </span>
+              </div>
               <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)', fontWeight: '600', display: 'block', marginTop: '2px' }}>
                 संस्कृत शिक्षा • संस्कार • संस्कृति • गौसेवा | नैमिषारण्य, सीतापुर (उ.प्र.)
               </span>
@@ -286,7 +291,7 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
                 <h3 className="font-serif gold-gradient-text" style={{ fontSize: '1.15rem', fontWeight: '800' }}>
                   श्री आत्मानन्द संस्कृत शिक्षण संस्थान
                 </h3>
-                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>नैमिषारण्य, सीतापुर (उ.प्र.)</p>
+                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>नैमिषारण्य, सीतापुर (उ.प्र.) | Pro Portal</p>
               </div>
             </div>
 

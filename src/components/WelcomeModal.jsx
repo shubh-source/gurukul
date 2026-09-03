@@ -1,20 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Images } from '../assets/images';
 import { X, Sparkles, ArrowRight, Shield, Volume2 } from 'lucide-react';
 
 export default function WelcomeModal({ onNavigate }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    // Show welcome modal once per session
-    const hasSeenWelcome = sessionStorage.getItem('has_seen_welcome');
-    if (!hasSeenWelcome) {
-      setIsOpen(true);
-    }
-  }, []);
+  const [isOpen, setIsOpen] = useState(true); // Always open on page load & refresh
 
   const handleClose = () => {
-    sessionStorage.setItem('has_seen_welcome', 'true');
     setIsOpen(false);
   };
 
@@ -31,9 +22,9 @@ export default function WelcomeModal({ onNavigate }) {
         position: 'fixed',
         inset: 0,
         zIndex: 10000,
-        background: 'rgba(0, 0, 0, 0.82)',
-        backdropFilter: 'blur(14px)',
-        WebkitBackdropFilter: 'blur(14px)',
+        background: 'rgba(0, 0, 0, 0.85)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -49,14 +40,14 @@ export default function WelcomeModal({ onNavigate }) {
           background: 'var(--bg-primary)',
           borderRadius: 'var(--radius-lg)',
           overflow: 'hidden',
-          boxShadow: '0 25px 60px rgba(0,0,0,0.8)',
+          boxShadow: '0 25px 60px rgba(0,0,0,0.9)',
           border: '2px solid var(--accent-gold)',
           position: 'relative'
         }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Image Header */}
-        <div style={{ position: 'relative', height: '200px', overflow: 'hidden' }}>
+        <div style={{ position: 'relative', height: '210px', overflow: 'hidden' }}>
           <img 
             src={Images.atmanandHero} 
             alt="नैमिषारण्य गुरुकुल"
@@ -78,8 +69,8 @@ export default function WelcomeModal({ onNavigate }) {
               width: '36px',
               height: '36px',
               borderRadius: '50%',
-              background: 'rgba(0,0,0,0.6)',
-              border: '1px solid rgba(255,255,255,0.2)',
+              background: 'rgba(0,0,0,0.65)',
+              border: '1px solid rgba(255,255,255,0.3)',
               color: '#fff',
               display: 'flex',
               alignItems: 'center',
@@ -92,7 +83,7 @@ export default function WelcomeModal({ onNavigate }) {
         </div>
 
         {/* Content */}
-        <div style={{ padding: '0 2rem 2rem 2rem', textAlign: 'center', position: 'relative', marginTop: '-2rem' }}>
+        <div style={{ padding: '0 2rem 2rem 2rem', textAlign: 'center', position: 'relative', marginTop: '-2.2rem' }}>
           
           <div 
             style={{
@@ -106,17 +97,17 @@ export default function WelcomeModal({ onNavigate }) {
               alignItems: 'center',
               justifyContent: 'center',
               margin: '0 auto 1rem auto',
-              boxShadow: '0 0 25px rgba(212,175,55,0.5)'
+              boxShadow: '0 0 25px rgba(212,175,55,0.6)'
             }}
           >
             🚩
           </div>
 
           <span className="badge-gold" style={{ marginBottom: '0.5rem', display: 'inline-block' }}>
-            नैमिषारण्य पावन तीर्थ क्षेत्र (सीतापुर, उ.प्र.)
+            👑 Pro Portal — नैमिषारण्य पावन तीर्थ क्षेत्र (सीतापुर, उ.प्र.)
           </span>
 
-          <h2 className="font-serif gold-gradient-text" style={{ fontSize: '1.75rem', fontWeight: '900', marginBottom: '0.75rem', lineHeight: 1.25 }}>
+          <h2 className="font-serif gold-gradient-text" style={{ fontSize: '1.8rem', fontWeight: '900', marginBottom: '0.75rem', lineHeight: 1.25 }}>
             स्वागतम्! श्री आत्मानन्द संस्कृत शिक्षण संस्थान
           </h2>
 
@@ -125,15 +116,15 @@ export default function WelcomeModal({ onNavigate }) {
           </p>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.75rem', marginBottom: '1.75rem', fontSize: '0.8rem' }}>
-            <div style={{ padding: '0.6rem', borderRadius: 'var(--radius-sm)', background: 'var(--bg-secondary)', border: '1px solid var(--border-color)' }}>
+            <div style={{ padding: '0.65rem', borderRadius: 'var(--radius-sm)', background: 'var(--bg-secondary)', border: '1px solid var(--border-color)' }}>
               <div style={{ fontSize: '1.2rem', marginBottom: '0.2rem' }}>📖</div>
               <strong>वेद-शास्त्र शिक्षा</strong>
             </div>
-            <div style={{ padding: '0.6rem', borderRadius: 'var(--radius-sm)', background: 'var(--bg-secondary)', border: '1px solid var(--border-color)' }}>
+            <div style={{ padding: '0.65rem', borderRadius: 'var(--radius-sm)', background: 'var(--bg-secondary)', border: '1px solid var(--border-color)' }}>
               <div style={{ fontSize: '1.2rem', marginBottom: '0.2rem' }}>🐄</div>
               <strong>गौशाला गौसेवा</strong>
             </div>
-            <div style={{ padding: '0.6rem', borderRadius: 'var(--radius-sm)', background: 'var(--bg-secondary)', border: '1px solid var(--border-color)' }}>
+            <div style={{ padding: '0.65rem', borderRadius: 'var(--radius-sm)', background: 'var(--bg-secondary)', border: '1px solid var(--border-color)' }}>
               <div style={{ fontSize: '1.2rem', marginBottom: '0.2rem' }}>🪔</div>
               <strong>धार्मिक अनुष्ठान</strong>
             </div>
