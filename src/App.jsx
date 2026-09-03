@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import SocialFloating from './components/SocialFloating';
 import AudioPlayer from './components/AudioPlayer';
 import SearchModal from './components/SearchModal';
+import WelcomeModal from './components/WelcomeModal';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -95,6 +96,8 @@ export default function App() {
 
   return (
     <div className="page-container">
+      <WelcomeModal onNavigate={handlePageChange} />
+
       <Navbar
         activePage={activePage}
         setActivePage={handlePageChange}
