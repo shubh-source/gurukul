@@ -38,6 +38,18 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
     }, 180);
   };
 
+  // Lock body background scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') setIsMenuOpen(false);
@@ -225,7 +237,7 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
         </div>
       </header>
 
-      {/* ALWAYS MOUNTED HOVER DRAWER WITH HINDI NAVIGATION */}
+      {/* ALWAYS MOUNTED HOVER DRAWER WITH SCROLL LOCK & SCROLLABLE CONTENT */}
       <div 
         onMouseEnter={() => setIsMenuOpen(false)}
         style={{
@@ -250,6 +262,7 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
             width: '100%',
             maxWidth: '480px',
             height: '100vh',
+            maxHeight: '100vh',
             background: 'var(--bg-primary)',
             borderLeft: '1px solid var(--accent-gold)',
             borderTopLeftRadius: '28px',
@@ -261,13 +274,12 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
             overflowY: 'auto',
             position: 'relative',
             transform: isMenuOpen ? 'translateX(0)' : 'translateX(100%)',
-            transition: 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)',
-            overflow: 'hidden'
+            transition: 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)'
           }}
           onClick={(e) => e.stopPropagation()}
         >
           {/* Drawer Header */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)', flexShrink: 0 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
               <span style={{ fontSize: '1.6rem' }}>🚩</span>
               <div>
@@ -349,7 +361,7 @@ export default function Navbar({ activePage, setActivePage, theme, toggleTheme, 
           </div>
 
           {/* Drawer Quick Contact Footer */}
-          <div style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid var(--border-color)' }}>
+          <div style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid var(--border-color)', flexShrink: 0 }}>
             <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
               <span>📞 संपर्क / हेल्पलाइन: +91 (05862) 289-ATMANAND</span>
             </div>
