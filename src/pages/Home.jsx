@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
 import { Images } from '../assets/images';
-import { ArrowRight, Sparkles, BookOpen, Clock, ShieldCheck, Award, Heart, Flame, Compass as JyotishIcon, CheckCircle2, ChevronRight, Bell, FileText } from 'lucide-react';
+import { ArrowRight, Sparkles, BookOpen, Clock, ShieldCheck, Award, Heart, Flame, Compass as JyotishIcon, CheckCircle2, ChevronRight, Bell, FileText, ChevronDown, ChevronUp } from 'lucide-react';
 
 const OBJECTIVES = [
-  { title: 'संस्कृत शिक्षा एवं वेद-शास्त्र', icon: '📖', color: 'var(--accent-saffron)', desc: 'वेद, वेदांग, संस्कृत साहित्य एवं व्याकरण का गहन अध्ययन तथा आधुनिक विषयों का समन्वय।' },
-  { title: 'गुरुकुल परंपरा एवं अनुशासन', icon: '🏛️', color: 'var(--accent-gold)', desc: 'आवासीय वातावरण में विद्यार्थियों का सर्वांगीण विकास, सदाचार, योग एवं चरित्र निर्माण।' },
-  { title: 'भारतीय संस्कार एवं धर्म निष्ठा', icon: '🪔', color: 'var(--accent-vermillion)', desc: 'वैदिक रीति-रिवाजों, अनुष्ठान, संध्या-वंदन एवं सांस्कृतिक मूल्यों का संरक्षण।' },
-  { title: 'गौसेवा एवं गौवंश संवर्धन', icon: '🐄', color: 'var(--accent-emerald)', desc: 'देशी गिर एवं कपिला गौवंश का संरक्षण, नित्य गौसेवा तथा जैविक कृषि संवर्धन।' },
-  { title: 'अनुसंधान एवं पाण्डुलिपि कार्य', icon: '📜', color: 'var(--accent-indigo)', desc: 'भारतीय ज्ञान परंपरा एवं प्राचीन संस्कृत ग्रंथों का आधुनिक दृष्टिकोण से अध्ययन।' }
+  { id: '1', title: 'संस्कृत शिक्षा एवं वेद-शास्त्र', icon: '📖', color: 'var(--accent-saffron)', desc: 'वेद, वेदांग, संस्कृत साहित्य एवं व्याकरण का गहन अध्ययन तथा आधुनिक विषयों का समन्वय।', details: '• अष्टाध्यायी व्याकरण पाठ्यक्रमानुयायी\n• ऋग्वेद, यजुर्वेद एवं सामवेद पाठांतर\n• पाणिनीय शिक्षा एवं कर्मकांड प्रशिक्षण\n• आधुनिक कंप्यूटर विज्ञान एवं व्यावहारिक अंग्रेजी' },
+  { id: '2', title: 'गुरुकुल परंपरा एवं अनुशासन', icon: '🏛️', color: 'var(--accent-gold)', desc: 'आवासीय वातावरण में विद्यार्थियों का सर्वांगीण विकास, सदाचार, योग एवं चरित्र निर्माण।', details: '• 100% निःशुल्क छात्रावास व सात्त्विक आहार\n• प्रातः ब्रह्म मुहूर्त जागरण व प्राणायाम\n• योगासन, धनुर्विद्या एवं क्रीड़ा\n• गुरु-शिष्य परंपरा में संस्कार सिंचन' },
+  { id: '3', title: 'भारतीय संस्कार एवं धर्म निष्ठा', icon: '🪔', color: 'var(--accent-vermillion)', desc: 'वैदिक रीति-रिवाजों, अनुष्ठान, संध्या-वंदन एवं सांस्कृतिक मूल्यों का संरक्षण।', details: '• नित्य प्रातः-सायं यज्ञाहुति व सन्ध्या-वन्दन\n• भगवद गीता व उपनिषद पाठांतर\n• संस्कार अनुष्ठान व स्तोत्र गायन\n• भारतीय पर्व उत्सव आयोजन' },
+  { id: '4', title: 'गौसेवा एवं गौवंश संवर्धन', icon: '🐄', color: 'var(--accent-emerald)', desc: 'देशी गिर एवं कपिला गौवंश का संरक्षण, नित्य गौसेवा तथा जैविक कृषि संवर्धन।', details: '• देशी गिर व कपिला गौवंश पालन\n• नित्य हरा चारा व पशुआहार सेवा\n• शुद्ध A2 गो-दुग्ध व घृत उत्पादन\n• जैविक गो-कृषि संवर्धन' },
+  { id: '5', title: 'अनुसंधान एवं पाण्डुलिपि कार्य', icon: '📜', color: 'var(--accent-indigo)', desc: 'भारतीय ज्ञान परंपरा एवं प्राचीन संस्कृत ग्रंथों का आधुनिक दृष्टिकोण से अध्ययन।', details: '• संस्कृत पाण्डुलिपि संरक्षण प्रकल्प\n• वेद-विज्ञान एवं खगोल शोध\n• प्राचीन दर्शन व न्याय अध्ययन\n• शोध पत्र व प्रकाशन' }
 ];
 
 export default function Home({ onNavigate }) {
+  const [expandedCard, setExpandedCard] = useState(null);
+
+  const toggleCard = (id) => {
+    setExpandedCard(expandedCard === id ? null : id);
+  };
+
   return (
     <div className="animate-fade-in">
       
@@ -156,27 +162,80 @@ export default function Home({ onNavigate }) {
         </div>
       </section>
 
-      {/* CORE OBJECTIVES SECTION */}
+      {/* CORE OBJECTIVES SECTION WITH INTERACTIVE ACCORDION TOGGLES */}
       <section style={{ padding: '5rem 0', background: 'var(--bg-secondary)', borderTop: '1px solid var(--border-color)' }}>
         <div className="container">
           
           <div className="section-header">
             <span className="section-tag">संस्थान के प्रमुख उद्देश्य</span>
             <h2 className="section-title font-serif">पाँच मुख्य आधार स्तंभ</h2>
+            <p className="section-subtitle">प्रत्येक कार्ड पर क्लिक करके विस्तृत विवरण (Details Toggle) देखें</p>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
-            {OBJECTIVES.map((obj, idx) => (
-              <div key={idx} className="glass-panel" style={{ padding: '1.75rem 1.5rem', background: 'var(--bg-primary)' }}>
-                <div style={{ fontSize: '2.4rem', marginBottom: '1rem' }}>{obj.icon}</div>
-                <h3 className="font-serif" style={{ fontSize: '1.2rem', fontWeight: '700', marginBottom: '0.6rem', color: obj.color }}>
-                  {obj.title}
-                </h3>
-                <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                  {obj.desc}
-                </p>
-              </div>
-            ))}
+            {OBJECTIVES.map((obj) => {
+              const isExpanded = expandedCard === obj.id;
+              return (
+                <div 
+                  key={obj.id} 
+                  className="glass-panel" 
+                  style={{ 
+                    padding: '1.75rem 1.5rem', 
+                    background: 'var(--bg-primary)',
+                    border: isExpanded ? '1px solid var(--accent-gold)' : '1px solid var(--border-color)',
+                    transition: 'var(--transition)'
+                  }}
+                >
+                  <div style={{ fontSize: '2.4rem', marginBottom: '1rem' }}>{obj.icon}</div>
+                  <h3 className="font-serif" style={{ fontSize: '1.2rem', fontWeight: '700', marginBottom: '0.6rem', color: obj.color }}>
+                    {obj.title}
+                  </h3>
+                  <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '1rem' }}>
+                    {obj.desc}
+                  </p>
+
+                  {/* Interactive Accordion Detail Content */}
+                  {isExpanded && (
+                    <div 
+                      className="animate-fade-in"
+                      style={{ 
+                        marginTop: '0.85rem', 
+                        paddingTop: '0.85rem', 
+                        borderTop: '1px dashed var(--border-color)',
+                        fontSize: '0.8rem',
+                        color: 'var(--text-secondary)',
+                        lineHeight: 1.6,
+                        whiteSpace: 'pre-line'
+                      }}
+                    >
+                      <strong style={{ color: 'var(--accent-gold)', display: 'block', marginBottom: '0.3rem' }}>पाठ्यक्रम व विशेषताएं:</strong>
+                      {obj.details}
+                    </div>
+                  )}
+
+                  {/* Toggle Button */}
+                  <button 
+                    onClick={() => toggleCard(obj.id)}
+                    style={{
+                      marginTop: '0.75rem',
+                      fontSize: '0.8rem',
+                      fontWeight: '700',
+                      color: 'var(--accent-gold)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.3rem',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    {isExpanded ? (
+                      <>[ - विवरण छिपाएं ] <ChevronUp size={14} /></>
+                    ) : (
+                      <>[ + विस्तृत जानकारी देखें ] <ChevronDown size={14} /></>
+                    )}
+                  </button>
+                </div>
+              );
+            })}
           </div>
 
         </div>
@@ -238,7 +297,7 @@ export default function Home({ onNavigate }) {
             <span className="section-tag">धार्मिक अनुष्ठान</span>
             <h2 className="section-title font-serif">वैदिक संस्कार एवं पूजन सेवाएं</h2>
             <p className="section-subtitle">
-              संस्थान द्वारा शास्त्रीय पद्धति से रुद्राभिषेक, महामृत्युंजय जाप, हवन-यज्ञ एवं विवाह संस्कार संपन्न कराए जाते हैं।
+              संस्थान द्वारा शास्त्रीय पद्धति से रुद्राभिषेक, महामृत्युंजय जाप, हवन-यज्ञ एवं विवाह संस्कार सम्पन्न कराए जाते हैं।
             </p>
           </div>
 
