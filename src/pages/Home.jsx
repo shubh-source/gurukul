@@ -128,7 +128,7 @@ export default function Home({ onNavigate, lang }) {
           {/* Right Cultural Image Showcase */}
           <div style={{ position: 'relative' }}>
             <div 
-              className="glass-panel pulse-glow"
+              className="glass-panel"
               style={{
                 borderRadius: 'var(--radius-lg)',
                 overflow: 'hidden',

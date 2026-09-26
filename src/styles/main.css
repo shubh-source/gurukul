@@ -109,8 +109,7 @@ button {
 }
 
 .saffron-gradient-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(216, 67, 21, 0.5);
+  filter: brightness(1.06);
 }
 
 .gold-outline-btn {
@@ -119,7 +118,7 @@ button {
   font-weight: 700;
   padding: 0.8rem 1.6rem;
   border-radius: var(--radius-full);
-  transition: var(--transition);
+  transition: background 0.2s ease, color 0.2s ease;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -128,7 +127,6 @@ button {
 .gold-outline-btn:hover {
   background: var(--accent-gold);
   color: #0f0d0e;
-  transform: translateY(-2px);
 }
 
 /* Page Container Layout */
@@ -150,23 +148,14 @@ button {
   padding: 0 1.5rem;
 }
 
-/* Smooth Fade In with Zero Vertical Shift */
+/* Simple Clean Fade In */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-@keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
-  50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); }
-}
-
 .animate-fade-in {
-  animation: fadeIn 0.25s ease-out forwards;
-}
-
-.pulse-glow {
-  animation: pulseGlow 3s infinite ease-in-out;
+  animation: fadeIn 0.2s ease-out forwards;
 }
 
 /* Section Header */
