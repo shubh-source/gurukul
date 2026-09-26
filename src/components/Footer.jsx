@@ -9,11 +9,11 @@ export default function Footer({ setActivePage }) {
   };
 
   const socialLinks = [
-    { name: 'YouTube', icon: Youtube, url: 'https://youtube.com', handle: '@ShriAtmanandSansthan' },
+    { name: 'YouTube', icon: Youtube, url: 'https://youtube.com', handle: '@AtmanandSansthan' },
     { name: 'Instagram', icon: Instagram, url: 'https://instagram.com', handle: '@atmanand_sansthan' },
-    { name: 'Facebook', icon: Facebook, url: 'https://facebook.com', handle: '/ShriAtmanandSansthan' },
+    { name: 'Facebook', icon: Facebook, url: 'https://facebook.com', handle: '/AtmanandSansthan' },
     { name: 'X / Twitter', icon: Twitter, url: 'https://x.com', handle: '@AtmanandSansthan' },
-    { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com', handle: 'Shri Atmanand Sansthan' },
+    { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com', handle: 'Atmanand Sansthan' },
     { name: 'Telegram', icon: Send, url: 'https://telegram.org', handle: 't.me/AtmanandSansthan' }
   ];
 
@@ -44,7 +44,7 @@ export default function Footer({ setActivePage }) {
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '1rem' }}>
               <img src={Images.logo} alt="स्वामी आत्मानन्द गुरुकुलम्" style={{ width: '40px', height: '40px', borderRadius: '50%', border: '1px solid var(--accent-gold)', objectFit: 'cover' }} />
               <span className="font-serif gold-gradient-text" style={{ fontSize: '1.3rem', fontWeight: '800' }}>
-                श्री आत्मानन्द संस्कृत शिक्षण संस्थान
+                आत्मानन्द संस्कृत शिक्षण संस्थान
               </span>
             </div>
             <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.65, marginBottom: '1.25rem' }}>
@@ -181,7 +181,7 @@ export default function Footer({ setActivePage }) {
           }}
         >
           <div>
-            © 2026 श्री आत्मानन्द संस्कृत शिक्षण संस्थान, नैमिषारण्य, सीतापुर (उ.प्र.)। सर्वाधिकार सुरक्षित।
+            © 2026 आत्मानन्द संस्कृत शिक्षण संस्थान, नैमिषारण्य, सीतापुर (उ.प्र.)। सर्वाधिकार सुरक्षित।
           </div>
           <div style={{ display: 'flex', gap: '1.5rem' }}>
             <a href="#privacy">गोपनीयता नीति</a>
