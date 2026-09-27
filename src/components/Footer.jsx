@@ -1,8 +1,10 @@
 import React from 'react';
 import { Images } from '../assets/images';
-import { Youtube, Instagram, Facebook, Twitter, Linkedin, Send, Music2, Mail, Phone, MapPin, Heart, ArrowUpRight } from 'lucide-react';
+import { Youtube, Instagram, Facebook, Twitter, Linkedin, Send, Mail, Phone, MapPin, Heart, ArrowUpRight } from 'lucide-react';
 
-export default function Footer({ setActivePage }) {
+export default function Footer({ setActivePage, lang }) {
+  const isEn = lang === 'en';
+
   const handlePageChange = (page) => {
     setActivePage(page);
     window.scrollTo(0, 0);
@@ -42,61 +44,63 @@ export default function Footer({ setActivePage }) {
           {/* Col 1: Brand Info */}
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '1rem' }}>
-              <img src={Images.logo} alt="स्वामी आत्मानन्द गुरुकुलम्" style={{ width: '40px', height: '40px', borderRadius: '50%', border: '1px solid var(--accent-gold)', objectFit: 'cover' }} />
-              <span className="font-serif gold-gradient-text" style={{ fontSize: '1.3rem', fontWeight: '800' }}>
-                आत्मानन्द संस्कृत शिक्षण संस्थान
+              <img src={Images.logo} alt="आत्मानन्द गुरुकुलम्" style={{ width: '40px', height: '40px', borderRadius: '50%', border: '1px solid var(--accent-gold)', objectFit: 'cover' }} />
+              <span className="font-serif gold-gradient-text" style={{ fontSize: '1.2rem', fontWeight: '800' }}>
+                {isEn ? 'Atmanand Sanskrit Teaching Institute' : 'आत्मानन्द संस्कृत शिक्षण संस्थान'}
               </span>
             </div>
             <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.65, marginBottom: '1.25rem' }}>
-              भारतीय ज्ञान परंपरा, संस्कृत भाषा, वेद-वेदांग, संस्कार, गौसेवा एवं संस्कृति के संरक्षण व संवर्धन हेतु समर्पित एक पवित्र शैक्षणिक संस्थान।
+              {isEn 
+                ? 'A sacred educational institution dedicated to preserving and enriching Indian Knowledge Systems, Sanskrit language, Vedic scriptures, Samskaras, cow welfare, and Sanatan culture.'
+                : 'भारतीय ज्ञान परंपरा, संस्कृत भाषा, वेद-वेदांग, संस्कार, गौसेवा एवं संस्कृति के संरक्षण व संवर्धन हेतु समर्पित एक पवित्र शैक्षणिक संस्थान।'}
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-gold)', fontSize: '0.85rem', fontWeight: '700' }}>
-              <span>📍 नैमिषारण्य, सीतापुर, उत्तर प्रदेश - 261402</span>
+              <span>📍 {isEn ? 'Naimisharanya, Sitapur, Uttar Pradesh - 261402' : 'नैमिषारण्य, सीतापुर, उत्तर प्रदेश - 261402'}</span>
             </div>
           </div>
 
           {/* Col 2: Quick Navigation 1 */}
           <div>
             <h4 className="font-serif" style={{ fontSize: '1.1rem', fontWeight: '700', marginBottom: '1.25rem', color: 'var(--accent-gold)' }}>
-              मुख्य पृष्ठ लिंक
+              {isEn ? 'Main Pages' : 'मुख्य पृष्ठ लिंक'}
             </h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.9rem' }}>
-              <li><button onClick={() => handlePageChange('home')} style={{ color: 'var(--text-secondary)' }}>मुख्य पृष्ठ (Home)</button></li>
-              <li><button onClick={() => handlePageChange('about')} style={{ color: 'var(--text-secondary)' }}>हमारे बारे में (About Us)</button></li>
-              <li><button onClick={() => handlePageChange('gurukul')} style={{ color: 'var(--text-secondary)' }}>गुरुकुल परंपरा (Gurukul)</button></li>
-              <li><button onClick={() => handlePageChange('gaushala')} style={{ color: 'var(--text-secondary)' }}>गौशाला एवं गौसेवा (Gaushala)</button></li>
-              <li><button onClick={() => handlePageChange('research')} style={{ color: 'var(--text-secondary)' }}>अनुसंधान (Research)</button></li>
-              <li><button onClick={() => handlePageChange('sanskar')} style={{ color: 'var(--text-secondary)' }}>संस्कार एवं अनुष्ठान</button></li>
+              <li><button onClick={() => handlePageChange('home')} style={{ color: 'var(--text-secondary)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>{isEn ? 'Home' : 'मुख्य पृष्ठ (Home)'}</button></li>
+              <li><button onClick={() => handlePageChange('about')} style={{ color: 'var(--text-secondary)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>{isEn ? 'About Us' : 'हमारे बारे में (About Us)'}</button></li>
+              <li><button onClick={() => handlePageChange('gurukul')} style={{ color: 'var(--text-secondary)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>{isEn ? 'Gurukul Tradition' : 'गुरुकुल परंपरा (Gurukul)'}</button></li>
+              <li><button onClick={() => handlePageChange('gaushala')} style={{ color: 'var(--text-secondary)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>{isEn ? 'Gaushala & Cow Care' : 'गौशाला एवं गौसेवा (Gaushala)'}</button></li>
+              <li><button onClick={() => handlePageChange('research')} style={{ color: 'var(--text-secondary)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>{isEn ? 'Vedic Research' : 'अनुसंधान (Research)'}</button></li>
+              <li><button onClick={() => handlePageChange('sanskar')} style={{ color: 'var(--text-secondary)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>{isEn ? 'Samskara & Rituals' : 'संस्कार एवं अनुष्ठान'}</button></li>
             </ul>
           </div>
 
           {/* Col 3: Quick Navigation 2 */}
           <div>
             <h4 className="font-serif" style={{ fontSize: '1.1rem', fontWeight: '700', marginBottom: '1.25rem', color: 'var(--accent-gold)' }}>
-              सेवाएं एवं प्रवेश
+              {isEn ? 'Services & Admissions' : 'सेवाएं एवं प्रवेश'}
             </h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.9rem' }}>
-              <li><button onClick={() => handlePageChange('jyotish')} style={{ color: 'var(--text-secondary)' }}>ज्योतिष परामर्श (Jyotish)</button></li>
-              <li><button onClick={() => handlePageChange('donate')} style={{ color: 'var(--text-secondary)' }}>सहयोग एवं अनुदान (Donate)</button></li>
-              <li><button onClick={() => handlePageChange('admission')} style={{ color: 'var(--text-secondary)' }}>प्रवेश प्रक्रिया (Admission)</button></li>
-              <li><button onClick={() => handlePageChange('gallery')} style={{ color: 'var(--text-secondary)' }}>चित्रदीर्घा (Gallery)</button></li>
-              <li><button onClick={() => handlePageChange('notice')} style={{ color: 'var(--text-secondary)' }}>सूचना एवं समाचार (Notices)</button></li>
-              <li><button onClick={() => handlePageChange('contact')} style={{ color: 'var(--text-secondary)' }}>संपर्क करें (Contact Us)</button></li>
+              <li><button onClick={() => handlePageChange('jyotish')} style={{ color: 'var(--text-secondary)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>{isEn ? 'Astrology Consultation' : 'ज्योतिष परामर्श (Jyotish)'}</button></li>
+              <li><button onClick={() => handlePageChange('donate')} style={{ color: 'var(--text-secondary)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>{isEn ? 'Donate & Support' : 'सहयोग एवं अनुदान (Donate)'}</button></li>
+              <li><button onClick={() => handlePageChange('admission')} style={{ color: 'var(--text-secondary)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>{isEn ? 'Admission Form' : 'प्रवेश प्रक्रिया (Admission)'}</button></li>
+              <li><button onClick={() => handlePageChange('gallery')} style={{ color: 'var(--text-secondary)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>{isEn ? 'Photo Gallery' : 'चित्रदीर्घा (Gallery)'}</button></li>
+              <li><button onClick={() => handlePageChange('notice')} style={{ color: 'var(--text-secondary)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>{isEn ? 'Notices & Updates' : 'सूचना एवं समाचार (Notices)'}</button></li>
+              <li><button onClick={() => handlePageChange('contact')} style={{ color: 'var(--text-secondary)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>{isEn ? 'Contact Us' : 'संपर्क करें (Contact Us)'}</button></li>
             </ul>
           </div>
 
           {/* Col 4: Newsletter & Contact */}
           <div>
             <h4 className="font-serif" style={{ fontSize: '1.1rem', fontWeight: '700', marginBottom: '1.25rem', color: 'var(--accent-gold)' }}>
-              सूचना एवं पत्रिका
+              {isEn ? 'Updates & Contact' : 'सूचना एवं संपर्क'}
             </h4>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.85rem' }}>
-              संस्थान की आगामी गतिविधियों, अनुष्ठान तिथियों व प्रकाशनों से जुड़ें।
+              {isEn ? 'Stay connected with upcoming spiritual ceremonies, events and publications.' : 'संस्थान की आगामी गतिविधियों, अनुष्ठान तिथियों व प्रकाशनों से जुड़ें।'}
             </p>
             <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
               <input
                 type="email"
-                placeholder="ईमेल भरें..."
+                placeholder={isEn ? "Enter your email..." : "ईमेल भरें..."}
                 style={{
                   padding: '0.6rem 0.85rem',
                   borderRadius: 'var(--radius-sm)',
@@ -108,11 +112,11 @@ export default function Footer({ setActivePage }) {
                 }}
               />
               <button className="saffron-gradient-btn" style={{ padding: '0.6rem 1rem', fontSize: '0.85rem' }}>
-                जुड़ें
+                {isEn ? 'Subscribe' : 'जुड़ें'}
               </button>
             </div>
             <div style={{ fontSize: '0.825rem', color: 'var(--text-muted)' }}>
-              📞 हेल्पलाइन: +91 (05862) 289-ATMANAND
+              📞 {isEn ? 'Helpline: +91 (05862) 289-ATMANAND' : 'हेल्पलाइन: +91 (05862) 289-ATMANAND'}
             </div>
           </div>
 
@@ -129,9 +133,9 @@ export default function Footer({ setActivePage }) {
           }}
         >
           <div style={{ textAlign: 'center', marginBottom: '1.25rem' }}>
-            <span className="section-tag" style={{ fontSize: '0.75rem' }}>सोशल मीडिया एवं नेटवर्क</span>
+            <span className="section-tag" style={{ fontSize: '0.75rem' }}>{isEn ? 'Social Media & Networks' : 'सोशल मीडिया एवं नेटवर्क'}</span>
             <h3 className="font-serif" style={{ fontSize: '1.35rem', fontWeight: '700' }}>
-              संस्थान के आधिकारिक डिजिटल माध्यम
+              {isEn ? 'Official Digital Channels of the Institute' : 'संस्थान के आधिकारिक डिजिटल माध्यम'}
             </h3>
           </div>
 
@@ -181,12 +185,14 @@ export default function Footer({ setActivePage }) {
           }}
         >
           <div>
-            © 2026 आत्मानन्द संस्कृत शिक्षण संस्थान, नैमिषारण्य, सीतापुर (उ.प्र.)। सर्वाधिकार सुरक्षित।
+            {isEn 
+              ? '© 2026 Atmanand Sanskrit Teaching Institute, Naimisharanya, Sitapur (U.P.). All rights reserved.' 
+              : '© 2026 आत्मानन्द संस्कृत शिक्षण संस्थान, नैमिषारण्य, सीतापुर (उ.प्र.)। सर्वाधिकार सुरक्षित।'}
           </div>
           <div style={{ display: 'flex', gap: '1.5rem' }}>
-            <a href="#privacy">गोपनीयता नीति</a>
-            <a href="#terms">संस्थान नियमावली</a>
-            <a href="#sitemap">साइटमैप</a>
+            <a href="#privacy">{isEn ? 'Privacy Policy' : 'गोपनीयता नीति'}</a>
+            <a href="#terms">{isEn ? 'Terms & Guidelines' : 'संस्थान नियमावली'}</a>
+            <a href="#sitemap">{isEn ? 'Sitemap' : 'साइटमैप'}</a>
           </div>
         </div>
 
